@@ -1,65 +1,89 @@
-\section{Preliminares: ENO}
+%% ─────────────────────────────────────────────────────────────────────────────
+%%  Espacios normados ordenados (ENO) — definiciones básicas
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Espacios normados ordenados}
 
-\begin{frame}{Preliminares: ¿Qué es un Espacio Normado Ordenado?}
-	\begin{columns}
-		\column{.45\textwidth}
-		$-$\textbf{Definición: \cite{cone2007} }
-		\begin{block}{}
-			Sea $ (X, || \cdot || ) $ un espacio normado y  $ X_{+} \subset  X$ cerrado no vacío.\\ Se dice que $ X_{+} $ es un \textbf{cono}\\ si $ x, \ y \in X_{+} $, $\lambda \geq 0$ cumplen:
-			\begin{itemize}
-				%\item $P$ es cerrado en $X$.
-				\item  $x + y \in X_{+}$.
-				\item  $\lambda x \in X_{+}$.
-				\item  $-x, \ x \in X_{+}$ implica $x = \bar{0} $.
-				%\item $P$ es cerrado.
-			\end{itemize}
-			
-		\end{block}
-		A  $(X, || \cdot | | , X_{+}  )$ se le llama \textbf{espacio normado ordenado}.\\
-		
-		\column{.45\textwidth}
-	
-			\begin{tikzpicture}
-			%Tetraedro azul
-			\draw[color=blue] (0,-1) -- (-1,1) -- (1,1) -- (0,-1); 
-			\draw[color=blue] (-1,1) -- (0,1.5) -- (1,1);
-			\draw[ dashed, color=blue]  (0,-1) -- (0,1.5);
-			%Tetraedro Rojo
-			\draw[color=red] (0,-1) -- (-1,-3) -- (1,-3) -- (0,-1); 
-			\draw[ dashed, color=red] (-1,-3) -- (0,-2.5) -- (1,-3);
-			\draw[ dashed, color=red]  (0,-1) -- (0,-2.5);
-		\end{tikzpicture}
-		\textcolor{blue}{$ X_{+} + \lambda X_{+} \subset X_{+} $.}\\ \textcolor{blue}{$X_{+} $} $\cap$  \textcolor{red}{$(- x_{+} )$} $= \{ \bar{0} \}$.
-	\end{columns} 
+\begin{frame}{¿Qué es un espacio normado ordenado?}
+\framesubtitle{La estructura que permite hablar de orden y norma juntos}
+
+\begin{columns}
+    \column{.52\textwidth}
+    \begin{definition}[\cite{cone2007}]
+    Sea $(X,\|\cdot\|)$ un espacio normado y $\Xp\subset X$
+    cerrado, no vacío y \textbf{propio}.
+    $\Xp$ es un \textbf{cono} si para todo $x,y\in\Xp$ y $\lambda\ge 0$:
+    \begin{itemize}
+        \item $x+y\in\Xp$,
+        \item $\lambda x\in\Xp$,
+        \item $-x,x\in\Xp\Rightarrow x=\mathbf{0}$.
+    \end{itemize}
+    \end{definition}
+
+    A $(X,\|\cdot\|,\Xp)$ se le llama
+    \textbf{espacio normado ordenado} (ENO).
+
+    \column{.42\textwidth}
+    \begin{tikzpicture}[scale=0.85]
+        \draw[color=blue,thick] (0,-1)--(-1,1)--(1,1)--(0,-1);
+        \draw[color=blue,thick] (-1,1)--(0,1.5)--(1,1);
+        \draw[dashed,color=blue] (0,-1)--(0,1.5);
+        \draw[color=red,thick] (0,-1)--(-1,-3)--(1,-3)--(0,-1);
+        \draw[dashed,color=red] (-1,-3)--(0,-2.5)--(1,-3);
+        \draw[dashed,color=red] (0,-1)--(0,-2.5);
+    \end{tikzpicture}
+
+    \smallskip
+    \textcolor{blue}{$\Xp$}: cono positivo. \quad
+    \textcolor{red}{$-\Xp$}: cono negativo. \\[2pt]
+    $\Xp\cap(-\Xp)=\{\mathbf{0}\}$.
+\end{columns}
+
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%──────────────────────────────────────────────────────────────────────────────
 
+\begin{frame}{La relación de orden inducida por el cono}
+\framesubtitle{El cono define cómo comparar elementos}
 
-\begin{frame}{}
-	\begin{block}{Teorema}
-			Sean $(X, || \cdot || , X_{+} )$ un ENO, $ a,b,c \in X$ y $ \lambda \geq 0$. Entonces la relación  $``\leq "$ en $X$   definida como $a \leq b$ si $b-a \in X_{+}$  cumple que
-		\begin{enumerate}[(1)]
-			\item $a \leq a$, 
-			\item Si $a \leq b$ y $b \leq a$, entonces $ a=b $, 
-			\item Si $a \leq b$ y $b \leq c$, entonces $a \leq c$, 
-			\item Si $a \leq b$, entonces $a+c \leq b+c$, 
-			\item $ a \leq b$, entonces $\lambda a \leq \lambda b $.
-		\end{enumerate}
-	\end{block}
-Nota:	$ a < b $, si $ a \leq b  $ y  $ a \neq b . $ 
+\begin{theorem}
+En un ENO $(X,\|\cdot\|,\Xp)$, la relación
+$a\le b \;\overset{\text{def}}{\iff}\; b-a\in\Xp$
+es un \textbf{orden parcial compatible} con la estructura lineal:
+\begin{enumerate}[(1)]
+    \item $a\le a$ \hfill (reflexividad)
+    \item $a\le b$ y $b\le a \Rightarrow a=b$ \hfill (antisimetría)
+    \item $a\le b$ y $b\le c \Rightarrow a\le c$ \hfill (transitividad)
+    \item $a\le b \Rightarrow a+c\le b+c$ \hfill (traslación)
+    \item $a\le b \Rightarrow \lambda a\le\lambda b$ para $\lambda\ge 0$ \hfill (escala)
+\end{enumerate}
+\end{theorem}
+
+\medskip
+Convenio: $a<b$ si $a\le b$ y $a\ne b$.
+
 \end{frame}
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\begin{frame}{}
-		$-$\textbf{Definición:} 
-		\begin{block}{}
-		    	Sean $(X,|| \cdot || , X_{+} ) $ un ENO y $ a, b \in X_{+} $ con $ a \leq b  $. 
-		\begin{itemize}
-			\item $[a , b ] = \left\lbrace  x \in X : a \leq x \leq b \right\rbrace  $ se llama  \textbf{intervalo ordenado cerrado} de $(X,\leq)$.
-	 	\item $[a, \infty ) = \left\lbrace  x \in X : a \leq x  \right\rbrace  $  se llama  \textbf{intervalo ordenado infinito  semicerrado por la izquierda } de $(X,\leq)$.\\
-    Análogamente se define $( - \infty, a ] $ el \textbf{intervalo ordenado infinito  semicerrado por la derecha}.
-		\end{itemize}
-		\end{block}
-		
-	\end{frame}
 
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Intervalos ordenados}
+\framesubtitle{Análogos de los intervalos reales en un ENO}
+
+\begin{definition}
+Sean $(X,\|\cdot\|,\Xp)$ un ENO y $a,b\in X$ con $a\le b$.
+\begin{itemize}
+    \item $[a,b]=\{x\in X:a\le x\le b\}$:
+          \textbf{intervalo ordenado cerrado}.
+    \item $[a,\infty)=\{x\in X:a\le x\}$:
+          \textbf{semirrecta derecha}.
+    \item $(-\infty,a]=\{x\in X:x\le a\}$:
+          \textbf{semirrecta izquierda}.
+\end{itemize}
+\end{definition}
+
+\medskip
+\begin{alertblock}{Relevancia}
+Los intervalos ordenados son el dominio natural de las funciones
+crecientes y el escenario para los teoremas de punto fijo.
+\end{alertblock}
+
+\end{frame}
