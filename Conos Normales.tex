@@ -1,0 +1,179 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+	\begin{frame}{Una primera clasificación de los tipos de Conos}
+		
+		\begin{itemize}
+			\item  \textbf{Lema} 
+			\begin{block}{}
+				Sean $(X,|| \cdot || , P ) $ un ENO.  
+				\begin{enumerate}
+					\item[(i)] $P$ es   \textbf{Normal}. 
+				\item[(ii)] Si  toda sucesión creciente $\{ x_{n} \}$ en $X$ es convergente, si y sólo si existe $ \{  x_{n_{k}} \} $ una subsucesión de $\{ x_{n} \}$ convergente. 
+				\end{enumerate}
+    \end{block}
+		\end{itemize}
+	\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{}
+    \textbf{Demostración:}\\
+    $ " \Longrightarrow  " $ Sea $\{ x_{n} \}$ una  sucesión creciente  en $X$ y $ \{  x_{n_{k}} \} $ una subsucesión de $\{ x_{n} \}$ convergente a un elemento $x^{*} \in X  $. Sea $ n \in \mathbb{N} $, si  $ x_{n} \leq x_{n_{k}} $ y como  $X_{+}$ es cerrado se tiene que $ x_{n} \leq x^{*} $. Luego,   si $  n \geq n_{k} $ para un $ n_{k} \in \mathbb{N} $ fijo. Se sigue 
+    
+    $ x_{n_{k}}  \leq  x_{n}  $ o bien  $  0 \leq x^{*} - x_{n} \leq x^{*} - x_{n_{k}} $
+
+
+como  $X_{+}$ es normal, $ \{  x_{n}  \}  $ converge a $ x^{*} $. 
+   
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{}
+    $  " \Longleftarrow " $ Supongamos que  $ X_{+} $ no es norma, entonces existen sucesiones tales que 
+
+    $ 0 \leq x_{n} \leq y_{n} $ y $ || x_{n} || > 2^{n} || y_{n} || $ con $  n \in \mathbb{N} $.
+
+
+
+
+Definimos $ z_{n} = \frac{x_{n}}{|| x_{n}|| }  $  y $  v_{n} = \frac{y_{n}}{2^{n} ||y_{n}|| }  $
+
+Luego, se tiene 
+
+$  0 \leq  \frac{x_{n}}{|| x_{n}|| }   \leq  \frac{x_{n}}{ 2^{n} || y_{n}|| } \leq \frac{y_{n}}{2^{n} ||y_{n}|| }   $
+
+
+reescribiendo se tiene que 
+
+
+
+$  0 \leq  z_{n}  \leq  \frac{x_{n}}{ 2^{n} || y_{n}|| } \leq  v_{n}   $
+
+
+
+    También se cumple que 
+
+
+    $  \sum_{n=1}^{\infty} || v_{n} || = \sum_{n=1}^{\infty} \frac{1}{2^{n}} = 1  $
+
+
+    Como $X$ es completo, se sigue que $  \sum_{n=1}^{\infty}  v_{n}   $ converge a un %punto $ v \in X $, es decir, $  %\sum_{n=1}^{\infty}  v_{n} = v  $.
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{}
+    Se define 
+                \[ w_{n} = \left\{ \begin{array}{lcc}
+             v_{1} + \cdots + v_{2m} , &   si  &  %n=2m , \\
+             \\  v_{1} + \cdots + v_{2m}  + z_{2m+1}  ,  &  si  & n = 2m+1 . 
+             \end{array}
+   \right. \]
+
+
+Es fácil ver que $ \{ w_{2m} \} $ converge a $v$, pero $ \{ w_{n} \} $ no converge ya que $ || w_{2m+1} - w_{2m} || = || z_{2m+1} || = 1 $.
+
+
+    
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}{Ejemplo 1: ENO con $X_{+}$  normal}
+
+\begin{block}{}
+	Sean $C_{\mathbb{R}}^{1} [a,b] $ con   la norma  $  || f ||_{\infty} =  \sup \left\lbrace  \lvert f(x)  \rvert \forall x  \in \left[ a, b \right] \right\rbrace  $  y $C_{\mathbb{R}}^{1} [a,b]_{+} =\left\lbrace f \in C_{\mathbb{R}}^{1} [a,b] \mid \textcolor{green}{f(x) \geq 0} \right\rbrace  $ . $ ( C_{\mathbb{R}}^{1} [a,b], || \cdot ||_{\infty} , C_{\mathbb{R}}^{1} [a,b]_{+} ) $ es un ENO y $C_{\mathbb{R}}^{1} [a,b]_{+}$ es normal.
+\end{block}
+\begin{columns}
+	\column{.6\textwidth}
+    \begin{tikzpicture}
+%Ejes x and y
+    \draw[->] (-3.5,0) -- (3.9,0) node[below] {$x$};
+    \draw[->] (0,-1) -- (0,3.9) node[left] {$y$};
+    %Grafica verde de la función f
+    \draw[smooth,->,domain = -3.16:3.17, color=green,very thick]plot (\x,{sin(\x r)*(\x + 1 )+1 });\node at (2,3.9){\small \textcolor{green}{$f$}};
+    %Partición 
+    \draw[fill] (-3.16,0) circle (0.07) node[below]{$ a  $};
+   
+    \draw[fill] (3.3,0) circle (0.07) node[below]{$ b  $};
+  
+   
+  
+\end{tikzpicture}
+	\column{.45\textwidth}
+
+
+	Observaciones:\\
+ $(1) $	$ \bar{0} \leq  f \leq g $	 si y sólo si $ 0 \leq  f(x) \leq g(x)$ para todo $x \in [a,b]$ o bien $ || f ||_{\infty} \leq || g ||_{\infty} $.\\
+ 
+ $(2) $ Sean	$   h \leq g $, $f \in [h,g] $,  si y sólo si, $ h(x) \leq  f(x) \leq g(x)$ para todo $x \in [a,b]$.
+ 
+	 
+
+
+ 
+\end{columns} 
+    
+
+\end{frame}
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}{Ejemplo 2: ENO con $X_{+}$ \textcolor{red}{no} normal}
+
+\begin{block}{}
+	Sean $C_{\mathbb{R}}^{1} [0,1] $ con   la norma  $  || f || =  || f ||_{\infty} +  || {f}' ||_{\infty}  $  y $C_{\mathbb{R}}^{1} [0,1]_{+} =\left\lbrace f \in C_{\mathbb{R}}^{1} [0,1] \mid \textcolor{green}{f(x) \geq 0} \right\rbrace  $ . $ ( C_{\mathbb{R}}^{1} [0,1], || \cdot || , C_{\mathbb{R}}^{1} [0,1]_{+} ) $ es un ENO y $C_{\mathbb{R}}^{1} [0,1]_{+}$ no  es normal.
+\end{block}
+\begin{columns}
+	\column{.6\textwidth}
+    \begin{tikzpicture}
+%Ejes x and y
+    \draw[->] (-3.5,0) -- (3.9,0) node[below] {$x$};
+    \draw[->] (0,-1) -- (0,3.9) node[left] {$y$};
+    %Grafica verde de la función f
+    \draw[smooth,->,domain = -3.16:3.17, color=green,very thick]plot (\x,{sin(\x r)+1 });\node at (-0.2,0.4){\small \textcolor{green}{$f_{n}$}};
+    \draw[->, color=blue] (-3.16,2) -- (3.3,2) node[below] {$\bar{2}$};
+    %Partición 
+    \draw[fill] (-3.16,0) circle (0.07) node[below]{$ a  $};
+   
+    \draw[fill] (3.3,0) circle (0.07) node[below]{$ b  $};
+  
+   
+  
+\end{tikzpicture}
+	\column{.45\textwidth}
+
+
+	Sea $f_{n} : [0,1] \longrightarrow \mathbb{R}  $ con	$$ f_{n}(t) = \textcolor{green}{sen(2 \pi n  t) + 1} . $$  Como $$ ||{f_{n}}'||_{\infty} = || 2 \pi n cos( 2 \pi n t) ||_{\infty}   =  2 \pi n  ,$$ 
+	
+	entonces $|| f_{n} (t) ||= 1+  2 \pi n$ \hspace{2cm} y\\ $f_{n} (t) \leq 2 = \bar{2}$ con $ || \bar{2} || = 2  . $
+	 
+
+
+ 
+\end{columns} 
+    
+
+\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

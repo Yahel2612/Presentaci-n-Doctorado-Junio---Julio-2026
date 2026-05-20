@@ -1,0 +1,62 @@
+\section{El espacio $ BV([a,b],X) $}
+
+\begin{frame}{}
+    \begin{center}
+        \Huge  El espacio ``$ BV([a,b],X) $"  
+    \end{center}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Algunas propiedades de $ BV([a,b],X) $}
+    \begin{block}{Definición:}
+         Sea $ (X,||\cdot ||, X_{+} ) $ un espacio normado ordenado. Se define  $ BV ( [a,b], X ) = \{   f : [a,b] \longrightarrow X : Var_{a}^{b} (f, X) < \infty \} $\\
+         y  $  || f ||_{BV} = Var_{a}^{b}  ( f , X )  $ para toda $ f \in  BV ( [a,b], X ) $.
+    \end{block}
+    \begin{block}{Lema}
+         Sea $X$ un espacio normado ordenado. Se cumple 
+         \begin{itemize}
+             \item   Para toda $ f \in  BV ( [a,b], X ) $ se cumple que $ || f ||_{\infty } \leq || f ||_{BV} +  || f(a) || $.
+             \item $ BV ( [a,b], X )$ es un espacio de Banach con la norma $ || f||_{BVX} = || f(a) || + || f ||_{BV}  $.
+         \end{itemize}
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$ BV([a,b],X) $ como ENO}
+    \begin{exampleblock}{Teorema } %\cite{perez2022jordan},  }
+         Sea $(X,|| \cdot || , X_{+} ) $ un ENO y $ P_{c} = \{ f \in  BV([a,b],X) : f \mbox{ es creciente y } f \geq 0 \} $. Se cumple:
+         
+         \begin{itemize}
+             \item[--] $P_{c}$ es un cono para $ ( BV([a,b],X) ,  || \cdot  ||_{BVX}) $.
+              \item[--] Si  $ P_{c}  $ es un cono generador de  $ ( BV([a,b],X) ,  || \cdot  ||_{BVX}) $, entonces $ X_{+} $ es generador.  
+             \item[--] Si $ X_{+} $ es sólido, entonces $ P_{c}  $ es un cono generador de  $ ( BV([a,b],X) ,  || \cdot  ||_{BVX}) $.
+         \end{itemize}                
+       
+    \end{exampleblock}
+    
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{$ BV([a,b],X) $ como ENO}
+    \begin{exampleblock}{Teorema } %\cite{perez2022jordan},  }
+         Sea $(X,|| \cdot || , X_{+} ) $ un ENO y $ P_{c} = \{ f \in  BV([a,b],X) : f \mbox{ es creciente y } f \geq 0 \} $. Se cumple:
+         
+         \begin{itemize}
+             \item[--]  Si $X$ es un álgebra, entonces $ ( BV([a,b],X) ,  3 || \cdot  ||_{BVX}) $ es un álgebra.  
+             \item[--] Si $ X_{+} $ es normal, entonces $ P_{c}  $ es un cono normal de  $ ( BV([a,b],X) ,  || \cdot  ||_{BVX}) $.
+         \end{itemize}                          
+         
+        % Demostración: Sea $ \{ f_{n} \} \subset P_{c}  $ y $ x, y \in [a,b] $ con $ x < y $. Si $ \{ f_{n} \}  $ converge con la norma $|| \cdot  ||_{BVX} $ a una función vectorial $f \in BV([a,b],X) $, entonces $ || (f_{n} ( y ) - f_{n} (x) ) - ( f(y) - f(x) ) || \leq Var_{a}^{b} (f, X) \leq  || f  ||_{BVX}  $.\\
+         
+         %Por tanto, $  (f_{n} ( y ) - f_{n} (x) ), f_{n} (a) \in X_{+} $ convergen   a $ ( f(y) - f(x) ), f(a)  $. Así , $ ( f(y) - f(x) ), f(a)  \in X_{+} $ y por lo cual, $f \in P_{c} $.
+       
+    \end{exampleblock}
+    
+\end{frame}
+
