@@ -35,39 +35,53 @@
 %──────────────────────────────────────────────────────────────────────────────
 
 \begin{frame}{Relaciones entre tipos de conos}
-\framesubtitle{¿Qué implica qué? Las implicaciones son estrictas}
+\framesubtitle{Las familias no son excluyentes; un cono puede tener varias propiedades}
 
 \begin{center}
-\begin{tikzpicture}[scale=0.85,
-    cbox/.style={draw,rounded corners=5pt,minimum width=2.4cm,
-                 minimum height=0.85cm,align=center,font=\small\bfseries},
-    impl/.style={->,thick,shorten >=3pt,shorten <=3pt},
-    noimpl/.style={dashed,gray,shorten >=3pt,shorten <=3pt}]
+\begin{tikzpicture}[scale=0.82]
+  %% Universo ENO
+  \draw[rounded corners=10pt, fill=gray!7, draw=gray!40, thick]
+       (-4.5,-2.1) rectangle (4.5,2.1);
+  \node[gray!55, font=\footnotesize\bfseries] at (3.9,1.75) {ENO};
 
-\node[cbox,fill=MyTeal!25,draw=MyTeal] (sol) at (0,0) {Sólido};
-\node[cbox,fill=MyTeal!10,draw=MyTeal] (gen) at (4,0) {Generador};
-\node[cbox,fill=Amber!25,draw=Amber]   (ext) at (0,-2) {Extendible};
-\node[cbox,fill=Amber!10,draw=Amber]   (nor) at (4,-2) {Normal};
+  %% Región Generador (izquierda)
+  \begin{scope}
+    \clip (-4.5,-2.1) rectangle (4.5,2.1);
+    \fill[MyTeal, opacity=0.18] (-1.3,0) ellipse (2.6 and 1.55);
+  \end{scope}
+  \draw[MyTeal!70, thick] (-1.3,0) ellipse (2.6 and 1.55);
+  \node[MyTeal!85!black, font=\small\bfseries] at (-3.0,0) {Generador};
 
-\draw[impl,MyTeal]  (sol) -- (gen);
-\draw[impl,Amber]   (ext) -- (nor);
-\draw[noimpl]       (gen.north) to[bend right=30]
-      node[above,gray,font=\tiny]{recíproco no válido} (sol.north);
-\draw[noimpl]       (nor.north) to[bend right=30]
-      node[above,gray,font=\tiny]{recíproco no válido} (ext.north);
+  %% Región Normal (derecha)
+  \begin{scope}
+    \clip (-4.5,-2.1) rectangle (4.5,2.1);
+    \fill[Amber, opacity=0.18] (1.3,0) ellipse (2.6 and 1.55);
+  \end{scope}
+  \draw[Amber!80, thick] (1.3,0) ellipse (2.6 and 1.55);
+  \node[Amber!80!black, font=\small\bfseries] at (3.0,0) {Normal};
+
+  %% Sólido ⊂ Generador
+  \fill[MyTeal, opacity=0.40] (-2.5,0.5) ellipse (0.85 and 0.52);
+  \draw[MyTeal!90, thick] (-2.5,0.5) ellipse (0.85 and 0.52);
+  \node[font=\scriptsize\bfseries, MyTeal!20!black] at (-2.5,0.5) {Sólido};
+
+  %% Extendible ⊂ Normal
+  \fill[Amber, opacity=0.45] (2.5,0.5) ellipse (0.85 and 0.52);
+  \draw[Amber!90!black, thick] (2.5,0.5) ellipse (0.85 and 0.52);
+  \node[font=\scriptsize\bfseries, Amber!20!black] at (2.5,0.5) {Extendible};
+
+  %% Etiqueta intersección
+  \node[font=\tiny, gray!60, align=center] at (0,0.2) {Gen.};
+  \node[font=\tiny, gray!60, align=center] at (0,-0.2) {y Norm.};
 \end{tikzpicture}
 \end{center}
 
-\begin{columns}[t]
-\column{.48\textwidth}
-\small\textcolor{MyTeal}{\textbf{Sólido $\Rightarrow$ Generador:}}\\
-$\operatorname{int}(\Xp)\ne\emptyset$ implica $X=\Xp-\Xp$.
-
-\column{.48\textwidth}
-\small\textcolor{Amber}{\textbf{Extendible $\Rightarrow$ Normal:}}\\
-La existencia de un funcional separante garantiza control de la norma.
-
-\end{columns}
+\vspace{-4pt}
+{\footnotesize
+\textcolor{MyTeal}{\textbf{Sólido $\subset$ Generador}}\
+y\ \textcolor{Amber}{\textbf{Extendible $\subset$ Normal}}.
+Las clases Generador y Normal son independientes: pueden coexistir o no.
+}
 
 \end{frame}
 
@@ -87,13 +101,13 @@ $(C_{\mathbb{R}}^{1}[a,b],\|\cdot\|_{\infty},\Xp)$ es un ENO y $\Xp$ es \textbf{
 \begin{columns}
 \column{.58\textwidth}
 \begin{tikzpicture}[scale=0.72]
-    \draw[->] (-3.5,0) -- (3.9,0) node[below] {$x$};
-    \draw[->] (0,-0.5) -- (0,3.9) node[left] {$y$};
+    \draw[->] (-3.5,0) -- (3.9,0) node[below] {\small$x$};
+    \draw[->] (0,-0.5) -- (0,3.9) node[left] {\small$y$};
     \draw[smooth,<->,domain=-3.16:3.17,color=green!70!black,very thick]
         plot (\x,{sin(\x r)*(\x+1)+1});
-    \node at (2,3.9) {\small\textcolor{green!70!black}{$f\ge 0$}};
-    \draw[fill] (-3.16,0) circle (0.07) node[below]{$a$};
-    \draw[fill] (3.3,0) circle (0.07) node[below]{$b$};
+    \node at (3.2,3.6) {\small\textcolor{green!70!black}{$f\ge 0$}};
+    \draw[fill] (-3.16,0) circle (0.07) node[below]{\scriptsize$a$};
+    \draw[fill] (3.3,0) circle (0.07) node[below]{\scriptsize$b$};
 \end{tikzpicture}
 
 \column{.40\textwidth}
@@ -122,14 +136,15 @@ $\Xp$ \textbf{no es normal}.
 \begin{columns}
 \column{.55\textwidth}
 \begin{tikzpicture}[scale=0.70]
-    \draw[->] (-3.5,0) -- (3.9,0) node[below]{$x$};
-    \draw[->] (0,-0.5) -- (0,3.9) node[left]{$y$};
+    \draw[->] (-3.5,0) -- (3.9,0) node[below]{\small$x$};
+    \draw[->] (0,-0.5) -- (0,3.9) node[left]{\small$y$};
     \draw[smooth,<->,domain=-3.16:3.17,color=green!70!black,very thick]
         plot (\x,{sin(\x r)+1});
-    \node at (-0.5,0.5){\small\textcolor{green!70!black}{$f_n$}};
-    \draw[->,color=MyTeal] (-3.16,2) -- (3.3,2) node[below]{$\bar{2}$};
-    \draw[fill] (-3.16,0) circle (0.07) node[below]{$0$};
-    \draw[fill] (3.3,0) circle (0.07) node[below]{$1$};
+    \node at (3.3,1.2){\small\textcolor{green!70!black}{$f_n$}};
+    \draw[->,color=MyTeal] (-3.16,2) -- (3.3,2);
+    \node[right,color=MyTeal] at (3.3,2){\small$\bar{2}$};
+    \draw[fill] (-3.16,0) circle (0.07) node[below]{\scriptsize$0$};
+    \draw[fill] (3.3,0) circle (0.07) node[below]{\scriptsize$1$};
 \end{tikzpicture}
 
 \column{.43\textwidth}
