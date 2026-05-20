@@ -95,6 +95,8 @@
 % \usepackage{microtype}  % disponible en Overleaf; descomenta para Overleaf
 \usepackage{array}
 \usepackage{enumerate}
+% appendixnumberbeamer: disponible en Overleaf; fija el total visible al cuerpo principal
+\IfFileExists{appendixnumberbeamer.sty}{\usepackage{appendixnumberbeamer}}{}
 
 \usetikzlibrary{positioning,decorations.pathreplacing,shapes,arrows,backgrounds}
 
@@ -190,14 +192,14 @@ $f:[a,b]\to X$ se llama \textbf{función vectorial}.
 
 \begin{tikzpicture}[scale=0.75]
     \draw[thick,blue] (0,0) -- (3,0);
-    \draw[fill=blue] (0,0) circle (0.07) node[below]{$a$};
-    \draw[fill=blue] (3,0) circle (0.07) node[below]{$b$};
-    \node[blue,below] at (1.5,-0.45){\small$[a,b]$};
-    \draw[fill=gray!20,rounded corners=4pt,draw=gray!60] (5,-0.8) rectangle (9,1.8);
-    \node at (7,0.5){$(X,\|\cdot\|,\Xp)$};
-    \draw[->,green!60!black,thick] (3.2,0.1)
-          to[out=30,in=160]
-          node[midway,above]{\textcolor{green!60!black}{$f$}} (4.9,-0.2);
+    \draw[fill=blue] (0,0) circle (0.07) node[below]{\small$a$};
+    \draw[fill=blue] (3,0) circle (0.07) node[below]{\small$b$};
+    \node[blue,below] at (1.5,-0.5){\small$[a,b]$};
+    \draw[fill=gray!20,rounded corners=4pt,draw=gray!60] (5,-0.8) rectangle (9.5,1.8);
+    \node at (7.2,0.5){\small$(X,\|\cdot\|,\Xp)$};
+    \draw[->,green!60!black,thick] (3.2,0.15)
+          to[out=25,in=155]
+          node[midway,above=3pt]{\small\textcolor{green!60!black}{$f$}} (4.9,0.1);
 \end{tikzpicture}
 
 \smallskip
@@ -248,14 +250,14 @@ Al generalizar $f:[a,b]\to X$, surgen \textbf{tres nociones distintas}:
         \node[gray!60] at (7.25,1.5){\small$X$};
         \draw[->,green!60!black] (1.5,0.2) to[bend left=25] (6,0.7);
         \draw[->,green!60!black] (1,0.2) to[bend left=25] (7,1.3);
-        \draw[fill] (0,0) circle (0.07) node[below]{$a$};
-        \draw[fill] (1,0) circle (0.07) node[below]{$t_{i-1}$};
-        \draw[fill] (1.5,0) circle (0.07) node[below]{$t_i$};
-        \draw[fill] (3,0) circle (0.07) node[below]{$b$};
-        \draw[fill] (6,0.7) circle (0.06) node[below]{\tiny$f(t_{i-1})$};
-        \draw[fill] (7,1.3) circle (0.06) node[below]{\tiny$f(t_i)$};
+        \draw[fill] (0,0) circle (0.07) node[below]{\scriptsize$a$};
+        \draw[fill] (1,0) circle (0.07) node[below,xshift=-6pt]{\scriptsize$t_{i-1}$};
+        \draw[fill] (1.5,0) circle (0.07) node[below,xshift=4pt]{\scriptsize$t_i$};
+        \draw[fill] (3,0) circle (0.07) node[below]{\scriptsize$b$};
+        \draw[fill] (6,0.7) circle (0.06) node[below,yshift=-2pt]{\tiny$f(t_{i-1})$};
+        \draw[fill] (7,1.3) circle (0.06) node[right,yshift=2pt]{\tiny$f(t_i)$};
         \draw[dashed,red,thick] (6,0.7) -- (7,1.3);
-        \node[right,red] at (6.5,1.05){\tiny$\|f(t_i)-f(t_{i-1})\|$};
+        \node[above,red] at (6.5,1.05){\tiny$\|f(t_i)-f(t_{i-1})\|$};
     \end{tikzpicture}
 \end{itemize}
 
@@ -279,7 +281,7 @@ $\phi\circ f:[a,b]\to\mathbb{R}$ es de variación acotada.
     \draw[->] (0,-1)--(0,3.9) node[left]{$y$};
     \draw[smooth,<->,domain=-3.16:3.17,color=green!70!black,very thick]
         plot (\x,{sin(\x r)*(\x+1)+1});
-    \node at (2,3.9){\small\textcolor{green!70!black}{$f$}};
+    \node at (3.4,3.3){\small\textcolor{green!70!black}{$f$}};
     \foreach \x/\l in {-3.16/t_0,-1.8/t_1,-0.5/t_2,1.39/t_3,3.3/t_4}
         \draw[fill](\x,0) circle(0.07) node[below]{\tiny$\l$};
     \foreach \pt in {(-3.16,1),(-1.8,1.8),(-0.5,0.78),(1.39,3.38),(3.2,1)}
@@ -389,19 +391,19 @@ $F$ es \textbf{creciente} y de \textbf{v.a.\ débil}, pero
 \textbf{no} es de v.a.\ fuerte.
 \end{block}
 
-\begin{tikzpicture}[scale=0.70]
-    \draw[-] (-1,0)--(3,0) node[right]{$x$};
-    \draw[-] (0,-0.5)--(0,2) node[above]{$y$};
+\begin{tikzpicture}[scale=0.62]
+    \draw[-] (-0.5,0)--(3,0) node[right]{\small$x$};
+    \draw[-] (0,-0.8)--(0,2) node[above]{\small$y$};
     \draw[-,blue,thick] (0,1)--(1,1);
     \draw[dashed,blue] (1,1)--(1,0);
-    \node at (1,-0.9){\small$\chi_{[0,t_1]}$};
-    \node[blue] at (1,-0.4){\small$t_1$};
-    \draw[-] (5,0)--(9,0) node[right]{$x$};
-    \draw[-] (6,-0.5)--(6,2) node[above]{$y$};
-    \draw[-,red,thick] (6,1)--(8,1);
-    \draw[dashed,red] (8,1)--(8,0);
-    \node at (8,-0.9){\small$\chi_{[0,t_2]}$};
-    \node[red] at (8,-0.4){\small$t_2$};
+    \node[blue,below] at (1,-0.05){\scriptsize$t_1$};
+    \node[align=center] at (0.5,-0.55){\tiny$F(t_1)=\chi_{[0,t_1]}$};
+    \draw[-] (4.5,0)--(8.5,0) node[right]{\small$x$};
+    \draw[-] (5.5,-0.8)--(5.5,2) node[above]{\small$y$};
+    \draw[-,red,thick] (5.5,1)--(7.5,1);
+    \draw[dashed,red] (7.5,1)--(7.5,0);
+    \node[red,below] at (7.5,-0.05){\scriptsize$t_2$};
+    \node[align=center] at (6.5,-0.55){\tiny$F(t_2)=\chi_{[0,t_2]}$};
 \end{tikzpicture}
 
 \end{frame}
@@ -544,11 +546,16 @@ investigación.
 \end{frame}
 
 %% ═══════════════════════════════════════════════════════════════════════════
+%%  APÉNDICE — numera solo hasta aquí
+%% ═══════════════════════════════════════════════════════════════════════════
+\appendix
+
+%% ═══════════════════════════════════════════════════════════════════════════
 %%  BIBLIOGRAFÍA
 %% ═══════════════════════════════════════════════════════════════════════════
-\section*{Bibliografía}
+\section{Bibliografía}
 
-\begin{frame}[t,allowframebreaks]{Bibliografía}
+\begin{frame}[noframenumbering,t,allowframebreaks]{Bibliografía}
 \footnotesize
 \begin{thebibliography}{99}
 
@@ -597,7 +604,7 @@ investigación.
 %%  DIAPOSITIVA FINAL
 %% ═══════════════════════════════════════════════════════════════════════════
 
-\begin{frame}{}
+\begin{frame}[noframenumbering]{}
 \begin{center}
     \Huge ¡Gracias por su atención!
 
@@ -608,14 +615,13 @@ investigación.
 \end{frame}
 
 %% ═══════════════════════════════════════════════════════════════════════════
-%%  APÉNDICE — MATERIAL DE RESPALDO
+%%  MATERIAL DE RESPALDO
 %% ═══════════════════════════════════════════════════════════════════════════
-\appendix
-\section*{Material de respaldo}
+\section{Material de respaldo}
 
 %──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}{Propiedades del espacio $l^1$}
+\begin{frame}[noframenumbering]{Propiedades del espacio $l^1$}
 \framesubtitle{Material de respaldo}
 \begin{enumerate}
     \item Es un espacio de Schur
@@ -632,7 +638,7 @@ en $l^1$ con el orden coordinada a coordenada.
 
 %──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}{Teoremas de punto fijo en ENOs}
+\begin{frame}[noframenumbering]{Teoremas de punto fijo en ENOs}
 \framesubtitle{Aplicaciones directas — material de respaldo}
 
 \begin{block}{Teorema 1 (espacio de Schur)}
@@ -654,7 +660,7 @@ entonces $A$ tiene un punto fijo minimal y maximal.
 
 %──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}{El espacio $C^1([a,b],X)$ como ENO}
+\begin{frame}[noframenumbering]{El espacio $C^1([a,b],X)$ como ENO}
 \framesubtitle{Material de respaldo}
 
 Sea $X$ un ENO con $\Xp$ normal y $E^1=C^1([a,b],X)$.
@@ -675,7 +681,7 @@ y $\|f\|_\infty=\sup\{\|f(t)\|_X:t\in[a,b]\}$.
 
 %──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}{Demostración: Teorema en $l^1$}
+\begin{frame}[noframenumbering]{Demostración: Teorema en $l^1$}
 \framesubtitle{Material de respaldo}
 
 \begin{theorem}
@@ -696,7 +702,7 @@ intercambio de sumas finitas.
 
 %──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}{Demostración: normalidad del cono (lema)}
+\begin{frame}[noframenumbering]{Demostración: normalidad del cono (lema)}
 \framesubtitle{Material de respaldo}
 
 \small
