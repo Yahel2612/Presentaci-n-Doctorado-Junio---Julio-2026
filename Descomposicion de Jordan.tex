@@ -141,12 +141,37 @@ Con las definiciones anteriores:
           \dfrac{1+\|\mu\|}{2}\,\Var_a^b(f,X)$.
     \item $\Var_a^b(M_f+N_f,X) = \Var_a^b(f,X)\,\|\mu\|$.
     \item $\Var_a^b(M_f-N_f,X) = \Var_a^b(f,X)$.
+\end{enumerate}
+\end{theorem}
+
+\medskip
+\begin{block}{Lectura}
+Las funciones $M_f$ y $N_f$ tienen variación controlada por la de $f$.
+Su diferencia $M_f - N_f$ conserva \emph{exactamente} la variación total.
+\end{block}
+
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Consecuencias de la descomposición}
+\framesubtitle{Norma en $\BVX$ y estructura algebraica}
+
+\begin{theorem}[\cite{perez2022jordan}]
+\begin{enumerate}
     \item $\|f\|_{BV} = \|M_f-N_f\|_{BV} + \|f(a)\|$.
     \item Si $X$ es un álgebra, entonces $\BVX$ es un álgebra.
 \end{enumerate}
 \end{theorem}
 
-% TODO: verificar hipótesis — la propiedad 5 requiere hipótesis
+\medskip
+
+\begin{alertblock}{Significado}
+La norma BV se descompone canónicamente a través de la descomposición
+de Jordan. Cuando $X$ es álgebra, esta estructura se transfiere a $\BVX$.
+\end{alertblock}
+
+% TODO: verificar hipótesis — la propiedad 2 requiere hipótesis
 % adicionales sobre la norma de álgebra en BV.
 
 \end{frame}
