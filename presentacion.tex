@@ -129,26 +129,26 @@
 %% ═══════════════════════════════════════════════════════════════════════════
 \section{Motivación}
 
-\begin{frame}{¿Por qué generalizar la variación acotada?}
+\begin{frame}[shrink=20]{¿Por qué generalizar la variación acotada?}
 \framesubtitle{Contexto y pregunta central}
 
 \begin{block}{Punto de partida: caso clásico}
-El Teorema de Jordan garantiza que toda $f:[a,b]\to\mathbb{R}$ de
-variación acotada se descompone como diferencia de dos funciones crecientes.
+{\small El Teorema de Jordan garantiza que toda $f:[a,b]\to\mathbb{R}$ de
+variación acotada se descompone como diferencia de dos funciones crecientes.}
 \end{block}
 
-\medskip
+\vspace{2pt}
 
 \begin{block}{La pregunta}
-¿Qué ocurre si $f:[a,b]\to X$, donde $(X,\|\cdot\|,\Xp)$ es un
-\textbf{espacio normado ordenado}?
+{\small ¿Qué ocurre si $f:[a,b]\to X$, donde $(X,\|\cdot\|,\Xp)$ es un
+\textbf{espacio normado ordenado}?}
 \end{block}
 
-\medskip
+\vspace{2pt}
 
 \begin{alertblock}{Respuesta (adelanto)}
-Las propiedades clásicas dependen de la \textbf{geometría del cono} $\Xp$:
-normalidad, solidez, ser generador o extendible.
+{\small Las propiedades clásicas dependen de la \textbf{geometría del cono} $\Xp$:
+normalidad, solidez, ser generador o extendible.}
 \end{alertblock}
 
 % IDEA ORAL: Enmarcar la presentación como una investigación que generaliza
@@ -188,7 +188,7 @@ $f:[a,b]\to X$ se llama \textbf{función vectorial}.
 
 \medskip
 
-\begin{tikzpicture}[scale=0.9]
+\begin{tikzpicture}[scale=0.75]
     \draw[thick,blue] (0,0) -- (3,0);
     \draw[fill=blue] (0,0) circle (0.07) node[below]{$a$};
     \draw[fill=blue] (3,0) circle (0.07) node[below]{$b$};
@@ -200,7 +200,7 @@ $f:[a,b]\to X$ se llama \textbf{función vectorial}.
           node[midway,above]{\textcolor{green!60!black}{$f$}} (4.9,-0.2);
 \end{tikzpicture}
 
-\medskip
+\smallskip
 La pregunta: ¿cómo generalizar la variación total cuando el codominio
 tiene \emph{estructura de orden}?
 
@@ -208,29 +208,24 @@ tiene \emph{estructura de orden}?
 
 %──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}{Tres nociones de variación acotada}
+\begin{frame}[shrink=40]{Tres nociones de variación acotada}
 \framesubtitle{Las generalizaciones no son equivalentes en general}
 
 Al generalizar $f:[a,b]\to X$, surgen \textbf{tres nociones distintas}:
 
-\medskip
 \begin{enumerate}
+    \setlength{\itemsep}{4pt}
     \item \textbf{Variación fuerte:}
-          suma de normas de incrementos sobre toda partición.
-
+          $\sup_{\mathcal{P}}\sum\|f(t_i)-f(t_{i-1})\|<\infty$.
     \item \textbf{Variación débil:}
-          variación de $\phi\circ f$ en $\mathbb{R}$ para todo $\phi\in X^*$.
-
-    \item \textbf{Variación en orden}
-          (solo en espacios de Riesz):
-          suma acotada superiormente en el orden de $X$.
+          $\phi\circ f\in BV[a,b]$ para todo $\phi\in X^*$.
+    \item \textbf{Variación en orden} (espacios de Riesz):
+          existe $M\in X$ tal que
+          $\sup_{\mathcal{P}}\sum|f(t_i)-f(t_{i-1})|\le M$.
 \end{enumerate}
 
 \medskip
-\alert{Pregunta:} ¿cuáles implicaciones se cumplen entre ellas?
-
-\smallskip
-{\small Las siguientes diapositivas detallan cada noción.}
+\alert{Pregunta:} ¿qué implicaciones se cumplen entre estas nociones?
 
 \end{frame}
 
@@ -279,7 +274,7 @@ $\phi\circ f:[a,b]\to\mathbb{R}$ es de variación acotada.
 
 \begin{columns}[c]
 \column{.62\textwidth}
-\begin{tikzpicture}[scale=0.72]
+\begin{tikzpicture}[scale=0.58]
     \draw[->] (-3.5,0)--(3.9,0) node[below]{$x$};
     \draw[->] (0,-1)--(0,3.9) node[left]{$y$};
     \draw[smooth,<->,domain=-3.16:3.17,color=green!70!black,very thick]
@@ -297,10 +292,10 @@ $\phi\circ f:[a,b]\to\mathbb{R}$ es de variación acotada.
 \small
 $\phi\in X^*$ proyecta $f$ sobre $\mathbb{R}$.
 
-\medskip
+\smallskip
 Se mide la variación de $\phi\circ f$ con la norma usual de $\mathbb{R}$.
 
-\medskip
+\smallskip
 \textcolor{purple}{La variación débil} controla las
 oscilaciones de cada proyección.
 
@@ -323,6 +318,14 @@ V_f^o := \sup\Bigl\{\sum_{i=1}^n|f(t_i)-f(t_{i-1})| :
 \end{definition}
 
 \medskip
+\alert{Nota:} la noción de $|x|$ requiere estructura de espacio de Riesz.
+
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Variación en orden: propiedades}
+\framesubtitle{Relación con las otras nociones de variación acotada}
 
 \begin{theorem}
 Sea $X$ un retículo de Banach. Entonces:
@@ -333,11 +336,13 @@ Sea $X$ un retículo de Banach. Entonces:
 \end{theorem}
 
 \medskip
-\alert{Nota:} la variación en orden solo aplica cuando $|x|$ tiene
-sentido, es decir, en espacios de Riesz.
 
-% TODO: verificar hipótesis — precisar si el espacio de Riesz
-% necesita ser un retículo de Banach completo o basta ser retículo normado.
+\begin{block}{Resumen de implicaciones}
+\centering
+creciente $\Rightarrow$ v.a.\ en orden $\Rightarrow$ v.a.\ débil
+\end{block}
+
+% TODO: verificar hipótesis — precisar si basta retículo normado.
 
 \end{frame}
 
@@ -384,7 +389,7 @@ $F$ es \textbf{creciente} y de \textbf{v.a.\ débil}, pero
 \textbf{no} es de v.a.\ fuerte.
 \end{block}
 
-\begin{tikzpicture}[scale=0.85]
+\begin{tikzpicture}[scale=0.70]
     \draw[-] (-1,0)--(3,0) node[right]{$x$};
     \draw[-] (0,-0.5)--(0,2) node[above]{$y$};
     \draw[-,blue,thick] (0,1)--(1,1);
@@ -409,12 +414,11 @@ $F$ es \textbf{creciente} y de \textbf{v.a.\ débil}, pero
 \begin{block}{Contraejemplo}
 Sea $X=C_{\mathbb{R}}^1[0,1]$ con $\|f\|=\|f\|_\infty+\|f'\|_\infty$
 y $\Xp=\{f:f(0)=0,\,f(t)\ge 0\}$.
-
-\medskip
-Existe una función $f:[0,1]\to X$ \textbf{creciente} que
-\textbf{no} es de v.a.\ débil (y por tanto tampoco de v.a.\ fuerte).
+Existe $f:[0,1]\to X$ \textbf{creciente} que
+\textbf{no} es de v.a.\ débil (ni fuerte).
 \end{block}
 
+{\small
 \textbf{Construcción.}
 Se define
 $f(t) = x_n$ para $t\in[1-\tfrac{1}{n},1-\tfrac{1}{n+1})$
@@ -425,30 +429,29 @@ $|D(f)|\le\|f\|$, pero
 $\Var_a^b(D\circ f,P_m)\ge m+1$ para $P_m=\{0,1-\tfrac{1}{m+1},1\}$.
 
 Por tanto, $D\circ f\notin BV[0,1]$.
+}
 
 \end{frame}
 
 %──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}{Equivalencia: normalidad y variación débil}
+\begin{frame}[shrink=15]{Equivalencia: normalidad y variación débil}
 \framesubtitle{El cono normal es la condición correcta}
 
 \begin{block}{Lema (equivalencia)}
-Sea $X$ un ENO. Son equivalentes:
+{\footnotesize Sea $X$ un ENO. Son equivalentes:
 \begin{enumerate}
     \item $\Xp$ es \textbf{normal}.
     \item Para toda $f:[a,b]\to X$ \textbf{creciente}, $f$ es de v.a.\ \textbf{débil}.
     \item Toda sucesión creciente $\{x_n\}$ en $X$ converge
           si y solo si tiene una subsucesión convergente.
-\end{enumerate}
+\end{enumerate}}
 \end{block}
 
-\medskip
-
 \begin{alertblock}{Lectura del resultado}
-La normalidad del cono es \emph{exactamente} la condición que hace que
+{\footnotesize La normalidad del cono es \emph{exactamente} la condición que hace que
 el monotonismo implique variación débil.
-El contraejemplo anterior muestra que sin normalidad esta implicación falla.
+El contraejemplo anterior muestra que sin normalidad esta implicación falla.}
 \end{alertblock}
 
 % IDEA ORAL: Insistir en que el lema dice "si y solo si". No es solo
@@ -522,13 +525,20 @@ que $\delta$, se cumple
 \]
 \end{definition}
 
-\medskip
+\end{frame}
 
-\begin{alertblock}{Conexión con los resultados obtenidos}
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Pregunta abierta: integrabilidad y cono}
+\framesubtitle{Conexión con los resultados obtenidos}
+
+\begin{alertblock}{Pregunta abierta}
 Si $g$ es de v.a.\ y $f$ es continua, ¿basta con que $g$ sea de v.a.\
-débil para garantizar la existencia de la integral?
+débil para garantizar la existencia de la integral de Riemann-Stieltjes?
 
-El papel del cono $\Xp$ en la integrabilidad es la siguiente pregunta abierta.
+\medskip
+El papel del cono $\Xp$ en la integrabilidad es la siguiente línea de
+investigación.
 \end{alertblock}
 
 \end{frame}
@@ -536,9 +546,10 @@ El papel del cono $\Xp$ en la integrabilidad es la siguiente pregunta abierta.
 %% ═══════════════════════════════════════════════════════════════════════════
 %%  BIBLIOGRAFÍA
 %% ═══════════════════════════════════════════════════════════════════════════
-\section{Bibliografía}
+\section*{Bibliografía}
 
 \begin{frame}[t,allowframebreaks]{Bibliografía}
+\footnotesize
 \begin{thebibliography}{99}
 
     \bibitem{perez2022jordan}
@@ -659,8 +670,6 @@ y $\|f\|_\infty=\sup\{\|f(t)\|_X:t\in[a,b]\}$.
     \item Si en $X$ todos los intervalos ordenados cerrados son compactos,
           entonces en $E^1$ todos los intervalos ordenados cerrados son
           compactos.
-    \item % TODO: verificar hipótesis — la normalidad del cono de E^1
-          % depende de la norma elegida; revisar con la norma C^1 vs supremo.
 \end{enumerate}
 \end{frame}
 
@@ -690,6 +699,7 @@ intercambio de sumas finitas.
 \begin{frame}{Demostración: normalidad del cono (lema)}
 \framesubtitle{Material de respaldo}
 
+\small
 \textbf{Lema.} Sea $X$ un ENO. Son equivalentes:
 (i) $\Xp$ normal; (ii) toda sucesión creciente tiene subsucesión
 convergente implica convergencia de la sucesión.

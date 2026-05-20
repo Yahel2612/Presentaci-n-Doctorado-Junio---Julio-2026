@@ -38,7 +38,7 @@
 \framesubtitle{¿Qué implica qué? Las implicaciones son estrictas}
 
 \begin{center}
-\begin{tikzpicture}[
+\begin{tikzpicture}[scale=0.85,
     cbox/.style={draw,rounded corners=5pt,minimum width=2.4cm,
                  minimum height=0.85cm,align=center,font=\small\bfseries},
     impl/.style={->,thick,shorten >=3pt,shorten <=3pt},
@@ -86,7 +86,7 @@ $(C_{\mathbb{R}}^{1}[a,b],\|\cdot\|_{\infty},\Xp)$ es un ENO y $\Xp$ es \textbf{
 
 \begin{columns}
 \column{.58\textwidth}
-\begin{tikzpicture}[scale=0.85]
+\begin{tikzpicture}[scale=0.72]
     \draw[->] (-3.5,0) -- (3.9,0) node[below] {$x$};
     \draw[->] (0,-0.5) -- (0,3.9) node[left] {$y$};
     \draw[smooth,<->,domain=-3.16:3.17,color=green!70!black,very thick]
@@ -108,7 +108,7 @@ Las sucesiones crecientes acotadas convergen.
 
 %──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}{Ejemplo 2: ENO con cono \textbf{no} normal}
+\begin{frame}[t]{Ejemplo 2: ENO con cono \textbf{no} normal}
 \framesubtitle{$C^1_{\mathbb{R}}[0,1]$ con la norma $\|\cdot\|_\infty+\|\cdot'\|_\infty$}
 
 \begin{block}{}
@@ -121,7 +121,7 @@ $\Xp$ \textbf{no es normal}.
 
 \begin{columns}
 \column{.55\textwidth}
-\begin{tikzpicture}[scale=0.8]
+\begin{tikzpicture}[scale=0.70]
     \draw[->] (-3.5,0) -- (3.9,0) node[below]{$x$};
     \draw[->] (0,-0.5) -- (0,3.9) node[left]{$y$};
     \draw[smooth,<->,domain=-3.16:3.17,color=green!70!black,very thick]

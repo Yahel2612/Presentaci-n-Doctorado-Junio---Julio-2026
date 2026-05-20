@@ -33,7 +33,7 @@ subintervalo de la partición.
 
 %──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}{Variación total y variación acotada}
+\begin{frame}[shrink=20]{Variación total y variación acotada}
 \framesubtitle{Definición central}
 
 \begin{definition}[Variación total]
@@ -41,12 +41,9 @@ La \textbf{variación total} de $f$ en $[a,b]$ es
 \[
 V_a^b(f)=\sup\bigl\{ V(f,\mathcal{P}) : \mathcal{P} \text{ partición de } [a,b]\bigr\}.
 \]
-Si $V_a^b(f)<\infty$, decimos que $f$ es de \textbf{variación acotada} en $[a,b]$.
+Si $V_a^b(f)<\infty$, $f$ es de \textbf{variación acotada} y escribimos
+$f\in BV[a,b]$.
 \end{definition}
-
-\medskip
-
-Denotamos $BV[a,b] = \bigl\{f:[a,b]\to\mathbb{R} : V_a^b(f)<\infty\bigr\}$.
 
 \end{frame}
 
@@ -76,10 +73,10 @@ Denotamos $BV[a,b] = \bigl\{f:[a,b]\to\mathbb{R} : V_a^b(f)<\infty\bigr\}$.
 %──────────────────────────────────────────────────────────────────────────────
 
 \begin{frame}{Propiedades de la variación acotada}
-\framesubtitle{Estructura del espacio $BV[a,b]$}
+\framesubtitle{Estructura algebraica de $BV[a,b]$}
 
 \begin{block}{Lema}
-Sean $f,g \in BV[a,b]$, $c\in\mathbb{R}$. Entonces:
+{\small Sean $f,g \in BV[a,b]$, $c\in\mathbb{R}$. Entonces:
 \begin{enumerate}
     \item $V_a^b(f) = 0 \iff f$ es constante.
     \item $V_a^b(cf) = |c|\,V_a^b(f)$.
@@ -87,10 +84,15 @@ Sean $f,g \in BV[a,b]$, $c\in\mathbb{R}$. Entonces:
     \item $V_a^b(fg) \le \|f\|_{\infty} V_a^b(g) + \|g\|_{\infty} V_a^b(f)$.
     \item $V_a^b(|f|) = V_a^b(f)$.
     \item Si $c\in(a,b)$, entonces $V_a^b(f)=V_a^c(f)+V_c^b(f)$.
-\end{enumerate}
+\end{enumerate}}
 \end{block}
 
-\medskip
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}[shrink=10]{$BV[a,b]$ como espacio de Banach}
+\framesubtitle{Completitud y norma canónica}
 
 \begin{theorem}
 $BV[a,b]$ es un espacio de Banach con la norma
@@ -101,7 +103,7 @@ $\|f\|_{BV}= |f(a)| + V_a^b(f)$.
 
 %──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}{Teorema de descomposición de Jordan}
+\begin{frame}[shrink=10]{Teorema de descomposición de Jordan}
 \framesubtitle{Resultado fundamental del caso real}
 
 \begin{theorem}[Jordan, 1881]
@@ -113,14 +115,12 @@ f = g - h,
 donde $g$ y $h$ son funciones \textbf{crecientes} en $[a,b]$.
 \end{theorem}
 
-\medskip
+\smallskip
 
 \begin{alertblock}{Pregunta central de esta investigación}
-¿Cuándo se puede garantizar una descomposición análoga cuando
+{\small ¿Cuándo se puede garantizar una descomposición análoga cuando
 $f:[a,b]\to X$, con $(X,\|\cdot\|,\Xp)$ un espacio normado ordenado?
-
-\smallskip
-La respuesta depende de la \textbf{geometría del cono} $\Xp$.
+La respuesta depende de la \textbf{geometría del cono} $\Xp$.}
 \end{alertblock}
 
 % IDEA ORAL: Este es el punto de giro de la presentación. Todo lo que
@@ -130,7 +130,7 @@ La respuesta depende de la \textbf{geometría del cono} $\Xp$.
 
 %──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}{¿Qué cambia al pasar a funciones vectoriales?}
+\begin{frame}[shrink=10]{¿Qué cambia al pasar a funciones vectoriales?}
 \framesubtitle{Las dificultades del caso vectorial}
 
 En $(\mathbb{R},|\cdot|,\mathbb{R}_{+})$:
