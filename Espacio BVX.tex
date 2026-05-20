@@ -1,62 +1,91 @@
-\section{El espacio $ BV([a,b],X) $}
+%% ─────────────────────────────────────────────────────────────────────────────
+%%  El espacio BV([a,b],X) como ENO
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{El espacio $\BVX$}
 
 \begin{frame}{}
-    \begin{center}
-        \Huge  El espacio ``$ BV([a,b],X) $"  
-    \end{center}
+\begin{block}{}
+\centering\large
+El espacio $BV([a,b],X)$
+\end{block}
 \end{frame}
 
+%──────────────────────────────────────────────────────────────────────────────
 
+\begin{frame}{Definición y estructura de Banach}
+\framesubtitle{$BV([a,b],X)$ hereda la completitud de $X$}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}
+Sea $(X,\|\cdot\|,\Xp)$ un ENO. Se define
+\[
+\BVX = \bigl\{f:[a,b]\to X : \Var_a^b(f,X)<\infty\bigr\}
+\]
+con norma $\|f\|_{\BVX} = \|f(a)\| + \Var_a^b(f,X)$.
+\end{definition}
 
+\medskip
 
-\begin{frame}{Algunas propiedades de $ BV([a,b],X) $}
-    \begin{block}{Definición:}
-         Sea $ (X,||\cdot ||, X_{+} ) $ un espacio normado ordenado. Se define  $ BV ( [a,b], X ) = \{   f : [a,b] \longrightarrow X : Var_{a}^{b} (f, X) < \infty \} $\\
-         y  $  || f ||_{BV} = Var_{a}^{b}  ( f , X )  $ para toda $ f \in  BV ( [a,b], X ) $.
-    \end{block}
-    \begin{block}{Lema}
-         Sea $X$ un espacio normado ordenado. Se cumple 
-         \begin{itemize}
-             \item   Para toda $ f \in  BV ( [a,b], X ) $ se cumple que $ || f ||_{\infty } \leq || f ||_{BV} +  || f(a) || $.
-             \item $ BV ( [a,b], X )$ es un espacio de Banach con la norma $ || f||_{BVX} = || f(a) || + || f ||_{BV}  $.
-         \end{itemize}
-    \end{block}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{theorem}
+\begin{enumerate}
+  \item Para toda $f\in\BVX$,
+        $\|f\|_\infty \le \|f\|_{\BVX}$.
+  \item $(\BVX,\|\cdot\|_{\BVX})$ es un \textbf{espacio de Banach}.
+\end{enumerate}
+\end{theorem}
 
-\begin{frame}{$ BV([a,b],X) $ como ENO}
-    \begin{exampleblock}{Teorema } %\cite{perez2022jordan},  }
-         Sea $(X,|| \cdot || , X_{+} ) $ un ENO y $ P_{c} = \{ f \in  BV([a,b],X) : f \mbox{ es creciente y } f \geq 0 \} $. Se cumple:
-         
-         \begin{itemize}
-             \item[--] $P_{c}$ es un cono para $ ( BV([a,b],X) ,  || \cdot  ||_{BVX}) $.
-              \item[--] Si  $ P_{c}  $ es un cono generador de  $ ( BV([a,b],X) ,  || \cdot  ||_{BVX}) $, entonces $ X_{+} $ es generador.  
-             \item[--] Si $ X_{+} $ es sólido, entonces $ P_{c}  $ es un cono generador de  $ ( BV([a,b],X) ,  || \cdot  ||_{BVX}) $.
-         \end{itemize}                
-       
-    \end{exampleblock}
-    
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%──────────────────────────────────────────────────────────────────────────────
 
+\begin{frame}{$\BVX$ como espacio normado ordenado}
+\framesubtitle{El orden se hereda del cono de funciones crecientes}
 
-\begin{frame}{$ BV([a,b],X) $ como ENO}
-    \begin{exampleblock}{Teorema } %\cite{perez2022jordan},  }
-         Sea $(X,|| \cdot || , X_{+} ) $ un ENO y $ P_{c} = \{ f \in  BV([a,b],X) : f \mbox{ es creciente y } f \geq 0 \} $. Se cumple:
-         
-         \begin{itemize}
-             \item[--]  Si $X$ es un álgebra, entonces $ ( BV([a,b],X) ,  3 || \cdot  ||_{BVX}) $ es un álgebra.  
-             \item[--] Si $ X_{+} $ es normal, entonces $ P_{c}  $ es un cono normal de  $ ( BV([a,b],X) ,  || \cdot  ||_{BVX}) $.
-         \end{itemize}                          
-         
-        % Demostración: Sea $ \{ f_{n} \} \subset P_{c}  $ y $ x, y \in [a,b] $ con $ x < y $. Si $ \{ f_{n} \}  $ converge con la norma $|| \cdot  ||_{BVX} $ a una función vectorial $f \in BV([a,b],X) $, entonces $ || (f_{n} ( y ) - f_{n} (x) ) - ( f(y) - f(x) ) || \leq Var_{a}^{b} (f, X) \leq  || f  ||_{BVX}  $.\\
-         
-         %Por tanto, $  (f_{n} ( y ) - f_{n} (x) ), f_{n} (a) \in X_{+} $ convergen   a $ ( f(y) - f(x) ), f(a)  $. Así , $ ( f(y) - f(x) ), f(a)  \in X_{+} $ y por lo cual, $f \in P_{c} $.
-       
-    \end{exampleblock}
-    
+Sea $P_c = \{f\in\BVX : f \text{ creciente},\ f\ge 0\}$.
+
+\medskip
+
+\begin{theorem}[\cite{perez2022jordan}]
+\begin{itemize}
+  \item[--] $P_c$ es un cono para $(\BVX,\|\cdot\|_{\BVX})$.
+  \item[--] Si $\Xp$ es \textbf{sólido}, entonces $P_c$ es cono
+            \textbf{generador} de $\BVX$.
+  \item[--] Si $P_c$ es cono generador de $\BVX$, entonces $\Xp$
+            es generador.
+\end{itemize}
+\end{theorem}
+
+\medskip
+
+\begin{block}{Normalidad}
+Si $\Xp$ es \textbf{normal}, entonces $P_c$ es cono \textbf{normal}
+en $\BVX$.
+\end{block}
+
+\medskip
+\begin{alertblock}{Lectura}
+Las propiedades del cono se transfieren: $\BVX$ es un ENO y
+sus propiedades reflejan las del cono de $X$.
+\end{alertblock}
+
 \end{frame}
 
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Estructura algebraica de $\BVX$}
+\framesubtitle{Cuando $X$ es álgebra}
+
+\begin{theorem}[\cite{perez2022jordan}]
+Si $X$ es un álgebra con $\|fg\|\le\|f\|\,\|g\|$,
+entonces $(\BVX,3\|\cdot\|_{\BVX})$ también es un \textbf{álgebra}.
+\end{theorem}
+
+\medskip
+
+\begin{alertblock}{Importancia}
+Esta estructura permitirá aplicar teoremas de punto fijo en $\BVX$
+como espacio normado ordenado con cono y álgebra.
+\end{alertblock}
+
+% TODO: agregar referencia exacta para el álgebra BV.
+
+\end{frame}

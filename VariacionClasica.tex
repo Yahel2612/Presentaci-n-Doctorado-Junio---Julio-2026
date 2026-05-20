@@ -1,0 +1,157 @@
+%% ─────────────────────────────────────────────────────────────────────────────
+%%  Variación acotada clásica — caso real
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Variación acotada clásica}
+
+% IDEA ORAL: Comenzar recordando que todo el mundo conoce la variación
+% acotada en el caso real. Esto es el punto de partida; la pregunta
+% que motiva el trabajo es qué ocurre cuando el codominio no es ℝ.
+
+\begin{frame}{Particiones y variación respecto a una partición}
+\framesubtitle{Caso clásico: $f:[a,b]\to\mathbb{R}$}
+
+Una \textbf{partición} de $[a,b]$ es un conjunto ordenado de puntos
+\[
+\mathcal{P}\colon \{ a = x_0 < x_1 < \cdots < x_n = b \}.
+\]
+
+\medskip
+
+Dada $f:[a,b]\to \mathbb{R}$, la \textbf{variación de $f$ respecto a $\mathcal{P}$} es
+\[
+V(f,\mathcal{P})=\sum_{k=1}^n \bigl|f(x_k)-f(x_{k-1})\bigr|.
+\]
+
+\medskip
+
+\begin{alertblock}{Idea intuitiva}
+$V(f,\mathcal{P})$ suma los desplazamientos verticales de $f$ sobre cada
+subintervalo de la partición.
+\end{alertblock}
+
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Variación total y variación acotada}
+\framesubtitle{Definición central}
+
+\begin{definition}[Variación total]
+La \textbf{variación total} de $f$ en $[a,b]$ es
+\[
+V_a^b(f)=\sup\bigl\{ V(f,\mathcal{P}) : \mathcal{P} \text{ partición de } [a,b]\bigr\}.
+\]
+Si $V_a^b(f)<\infty$, decimos que $f$ es de \textbf{variación acotada} en $[a,b]$.
+\end{definition}
+
+\medskip
+
+Denotamos $BV[a,b] = \bigl\{f:[a,b]\to\mathbb{R} : V_a^b(f)<\infty\bigr\}$.
+
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Ejemplos fundamentales}
+\framesubtitle{Qué funciones reales tienen variación acotada}
+
+\begin{enumerate}
+    \item \textbf{Función constante.}
+    $f(x)\equiv c \;\Longrightarrow\; V_a^b(f)=0$.
+
+    \item \textbf{Función monótona.}
+    Si $f$ es creciente, $V(f,\mathcal{P})=f(b)-f(a)$ para toda partición,
+    por lo tanto $V_a^b(f)=f(b)-f(a)<\infty$.
+
+    \item \textbf{Función Lipschitz.}
+    Si $|f(x)-f(y)|\le L|x-y|$, entonces $V_a^b(f)\le L(b-a)<\infty$.
+\end{enumerate}
+
+% IDEA ORAL: Resaltar que toda función monótona acotada es de v.a.
+% Este hecho se pierde en el caso vectorial, y esa es exactamente
+% la pregunta central del trabajo.
+
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Propiedades de la variación acotada}
+\framesubtitle{Estructura del espacio $BV[a,b]$}
+
+\begin{block}{Lema}
+Sean $f,g \in BV[a,b]$, $c\in\mathbb{R}$. Entonces:
+\begin{enumerate}
+    \item $V_a^b(f) = 0 \iff f$ es constante.
+    \item $V_a^b(cf) = |c|\,V_a^b(f)$.
+    \item $V_a^b(f+g) \le V_a^b(f) + V_a^b(g)$.
+    \item $V_a^b(fg) \le \|f\|_{\infty} V_a^b(g) + \|g\|_{\infty} V_a^b(f)$.
+    \item $V_a^b(|f|) = V_a^b(f)$.
+    \item Si $c\in(a,b)$, entonces $V_a^b(f)=V_a^c(f)+V_c^b(f)$.
+\end{enumerate}
+\end{block}
+
+\medskip
+
+\begin{theorem}
+$BV[a,b]$ es un espacio de Banach con la norma
+$\|f\|_{BV}= |f(a)| + V_a^b(f)$.
+\end{theorem}
+
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Teorema de descomposición de Jordan}
+\framesubtitle{Resultado fundamental del caso real}
+
+\begin{theorem}[Jordan, 1881]
+Una función $f:[a,b]\to\mathbb{R}$ es de variación acotada \emph{si y solo si}
+puede escribirse como
+\[
+f = g - h,
+\]
+donde $g$ y $h$ son funciones \textbf{crecientes} en $[a,b]$.
+\end{theorem}
+
+\medskip
+
+\begin{alertblock}{Pregunta central de esta investigación}
+¿Cuándo se puede garantizar una descomposición análoga cuando
+$f:[a,b]\to X$, con $(X,\|\cdot\|,\Xp)$ un espacio normado ordenado?
+
+\smallskip
+La respuesta depende de la \textbf{geometría del cono} $\Xp$.
+\end{alertblock}
+
+% IDEA ORAL: Este es el punto de giro de la presentación. Todo lo que
+% sigue busca responder precisamente esta pregunta.
+
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{¿Qué cambia al pasar a funciones vectoriales?}
+\framesubtitle{Las dificultades del caso vectorial}
+
+En $(\mathbb{R},|\cdot|,\mathbb{R}_{+})$:
+\begin{itemize}
+  \item[\checkmark] Toda función monótona es de variación acotada.
+  \item[\checkmark] Toda función de v.a.\ admite descomposición de Jordan.
+  \item[\checkmark] Solo hay \emph{una} noción de variación acotada.
+\end{itemize}
+
+\medskip
+
+Al reemplazar $\mathbb{R}$ por $(X,\|\cdot\|,\Xp)$:
+\begin{itemize}
+  \item[$\times$] \textbf{Tres nociones distintas} de variación acotada.
+  \item[$\times$] Las funciones crecientes \emph{no necesariamente} tienen v.a.
+  \item[$\times$] La descomposición de Jordan \emph{no siempre} existe.
+\end{itemize}
+
+\medskip
+
+\textbf{Determinante:} las propiedades del cono $\Xp$
+(normalidad, solidez, ser generador, ser extendible).
+
+\end{frame}

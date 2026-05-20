@@ -1,805 +1,688 @@
 \documentclass{beamer}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  DATOS DE LA PLANTILLA %%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  CONFIGURACIÓN DE BLOQUES
+%% ═══════════════════════════════════════════════════════════════════════════
 \useinnertheme[shadow=true]{rounded}
-
 \usepackage{etoolbox}
 
 \setbeamercolor{block title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
 \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!50!bg}
-
 \setbeamercolor{block title example}{use=example text,fg=example text.fg,bg=example text.fg!20!bg}
 \setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!50!bg}
 
+% Demostraciones — borgoña
 \addtobeamertemplate{proof begin}{%
     \setbeamercolor{block title}{fg=white,bg=Burgundy}
-    \setbeamercolor{block body}{fg=black, bg=Burgundy!15}
+    \setbeamercolor{block body}{fg=black,bg=Burgundy!15}
 }{}
 
+% Teoremas — ámbar dorado
 \BeforeBeginEnvironment{theorem}{
     \setbeamercolor{block title}{fg=white,bg=Amber}
-    \setbeamercolor{block body}{fg=black, bg=Amber!20}
+    \setbeamercolor{block body}{fg=black,bg=Amber!20}
 }
 \AfterEndEnvironment{theorem}{
- \setbeamercolor{block title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
- \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!50!bg, fg=black}
+    \setbeamercolor{block title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
+    \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!50!bg,fg=black}
 }
 
+% Definiciones — verde azulado
 \BeforeBeginEnvironment{definition}{%
     \setbeamercolor{block title}{fg=white,bg=MyTeal}
-    \setbeamercolor{block body}{fg=black, bg=MyTeal!15}
+    \setbeamercolor{block body}{fg=black,bg=MyTeal!15}
 }
 \AfterEndEnvironment{definition}{
- \setbeamercolor{block title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
- \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!50!bg, fg=black}
+    \setbeamercolor{block title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
+    \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!50!bg,fg=black}
 }
 
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  TEMA BEAMER
+%% ═══════════════════════════════════════════════════════════════════════════
+\usetheme[
+    titlepagelogo=fcfm,
+    language=spanish,
+    coding=utf8,
+    bullet=triangle,
+    color=blue,
+    notshowauthor=true,
+    notshowtitle=true,
+]{TorinoTh}
 
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usetheme[titlepagelogo=fcfm,% Logo for the first page
-		  language=spanish,
-		  coding=utf8,
-		  bullet=triangle,
-		  color=blue,%green, blue
-		  notshowauthor=true,%Para no mostrar el nombre del autor en cada frame
-		  notshowtitle=true,
-         ]{TorinoTh}
-         
 \usepackage[beamer,customcolors]{hf-tikz}
 \setbeamercovered{transparent}
 \hfsetfillcolor{alerted text.fg!10}
 \hfsetbordercolor{alerted text.fg}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  DATOS DE LA PORTADA %%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\author{\footnotesize Roque Vidal Luciano Gerardo}
 
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  DATOS DE PORTADA
+%% ═══════════════════════════════════════════════════════════════════════════
+\author{\footnotesize Roque Vidal Luciano Gerardo}
 \rel{\footnotesize Dr. Juan Alberto Escamilla Reyna\\ Dr. Tomás Pérez Becerra}
-\title{``Teoremas de Punto Fijo en Espacios Normados y sus Aplicaciones en Ecuaciones Integrales"}
+\title{Funciones de Variación Acotada en Espacios Normados Ordenados}
 \ateneo{FCFM, BUAP}
 \setcandidatelabel{Presenta}
 \setrellabel{Asesores}
-\date{2 de Diciembre de 2025}
-\thispagestyle{empty}%%Este comando sirve para quitar la numeración de esta página (la de la portada). 
+\date{Junio -- Julio 2026}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  LIBRERÍAS USADAS %%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[utf8]{inputenc} 
-\usepackage{tikz} 
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  PAQUETES
+%% ═══════════════════════════════════════════════════════════════════════════
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{sidecap}
-\usepackage{wrapfig}
 \usepackage{soul}
-\usepackage{microtype}
+% \usepackage{microtype}  % disponible en Overleaf; descomenta para Overleaf
 \usepackage{array}
+\usepackage{enumerate}
 
-%\usepackage{makeidx}
-\usetikzlibrary{positioning,decorations.pathreplacing,shapes}
+\usetikzlibrary{positioning,decorations.pathreplacing,shapes,arrows,backgrounds}
 
-\usetikzlibrary{shapes,arrows} 
- \usetikzlibrary{shapes,backgrounds}
-%Definir colores
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  COLORES
+%% ═══════════════════════════════════════════════════════════════════════════
 \definecolor{Azul}{rgb}{0.1,0.1,0.6}
 \definecolor{Amber}{RGB}{180,120,0}
 \definecolor{MyTeal}{RGB}{0,100,100}
 \definecolor{Burgundy}{RGB}{120,0,30}
 
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  COMANDOS DE NOTACIÓN
+%% ═══════════════════════════════════════════════════════════════════════════
+\newcommand{\Xp}{X_{+}}               % cono positivo
+\newcommand{\Var}{\operatorname{Var}}  % variación
+\newcommand{\BVX}{BV([a,b],X)}        % espacio BV vectorial
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  INICIO DE DOCUMENTO    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  INICIO DEL DOCUMENTO
+%% ═══════════════════════════════════════════════════════════════════════════
 \begin{document}
 
-	\maketitle
-	%\setbeamercovered{dynamic}
-	%\titlepageframe
-	
-	\begin{frame}
-    \frametitle{Índice}
+\maketitle
+
+\begin{frame}{Contenido}
     \tableofcontents
-
-    \thispagestyle{empty}
 \end{frame}
 
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  SECCIÓN 1 — MOTIVACIÓN
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{Motivación}
 
+\begin{frame}{¿Por qué generalizar la variación acotada?}
+\framesubtitle{Contexto y pregunta central}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%\include{Actividades durante el semestre}
-
-
-
-%\section{\textcolor{blue}{Actividades realizadas durante el semestre}}
-%\begin{frame}{}
- %   \begin{block}{}
-%	\centering
-%	\LARGE  \textcolor{Azul}{Actividades realizadas durante el semestre} 
-	
-%\end{block}
-
-
-%\begin{itemize}
-%	\item \textbf{Congresos:}
-%	\begin{itemize}
-%		\item[$ \ast $] 	57 CONGRESO NACIONAL DE LA SOCIEDAD MATEMÁTICA MEXICANA,\\ 
- %        21-25 de Octubre de 2024
-%	\end{itemize}
-%	\item \textbf{Materias impartidas:}
-%	\begin{itemize}
-%	   \item[$ \ast $]  Matemáticas Básicas para Física, FCFM, BUAP.\\
-        %7 de Agosto de 2023 al 7 de Diciembre de 2023
-%	\end{itemize}
-%\end{itemize}
-
-
-%\end{frame}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\include{Definicion Cono}
-	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\include{Clasificacion de Conos}
-   
-	
-
-\begin{frame}{Espacios de funciones vectoriales sobre ENOs}
-\begin{block}{}
-    Sean $(X,|| \cdot || , X_{+} ) $ un ENO. Una función  \textcolor{green}{$ f: [a,b] \longrightarrow X $} se dice que es una función vectorial.
+\begin{block}{Punto de partida: caso clásico}
+El Teorema de Jordan garantiza que toda $f:[a,b]\to\mathbb{R}$ de
+variación acotada se descompone como diferencia de dos funciones crecientes.
 \end{block}
-    \begin{tikzpicture}
-	    % Dibujo el Dominio					+	+	+
-      \draw[color=blue] (0,0) -- (3,0);
-      % Codominio  (Rectángulo ):
-      \draw[fill=gray] (5,-1) rectangle (9,2) node[fill=red!20,draw,double,rounded corners] {$ X $};
-     
-    %  Partición 
-     \draw[fill] (0,0) circle (0.07) node[below]{$ a $}; 
-     % \draw[fill] (1,0) circle (0.07) node[below]{$t_{i-1}  $};
-        %\draw[fill] (1.5,0) circle (0.07) node[below]{$t_{i}  $}; 
-          \draw[fill] (3,0) circle (0.07) node[below]{$ b  $}; 
-        %f(x_{i} ) , f(x_{i-1} )
-      
-     
-        % punto inicial, grado inicial, final, radio
-\draw[->,color=green] (2,0) to[bend left] (7,1.4);
 
-\node (1) at (3.5,2.3){ \textcolor{green}{$f$}};
-	\end{tikzpicture}
+\medskip
 
+\begin{block}{La pregunta}
+¿Qué ocurre si $f:[a,b]\to X$, donde $(X,\|\cdot\|,\Xp)$ es un
+\textbf{espacio normado ordenado}?
+\end{block}
+
+\medskip
+
+\begin{alertblock}{Respuesta (adelanto)}
+Las propiedades clásicas dependen de la \textbf{geometría del cono} $\Xp$:
+normalidad, solidez, ser generador o extendible.
+\end{alertblock}
+
+% IDEA ORAL: Enmarcar la presentación como una investigación que generaliza
+% un resultado clásico y descubre qué es lo realmente esencial en él.
 
 \end{frame}
 
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  SECCIÓN 2 — VARIACIÓN ACOTADA CLÁSICA
+%% ═══════════════════════════════════════════════════════════════════════════
+\include{VariacionClasica}
 
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  SECCIÓN 3 — ESPACIOS NORMADOS ORDENADOS
+%% ═══════════════════════════════════════════════════════════════════════════
+\include{Definicion Cono}
 
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  SECCIÓN 4 — CLASIFICACIÓN DE CONOS
+%% ═══════════════════════════════════════════════════════════════════════════
+\include{Clasificacion de Conos}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  SECCIÓN 5 — VARIACIÓN ACOTADA PARA FUNCIONES VECTORIALES
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{Variación acotada para funciones vectoriales}
 
+%──────────────────────────────────────────────────────────────────────────────
 
+\begin{frame}{Funciones vectoriales sobre ENOs}
+\framesubtitle{El nuevo objeto de estudio}
 
-\section{V. A. débil y fuerte para funciones crecientes}
-\begin{frame}{}
-    \begin{center}
-        {\Huge  Algunos resultados sobre ``Variación Acotada" para funciones crecientes }
-    \end{center}
-\end{frame}
+\begin{definition}
+Sea $(X,\|\cdot\|,\Xp)$ un ENO. Una función
+$f:[a,b]\to X$ se llama \textbf{función vectorial}.
+\end{definition}
 
+\medskip
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%\setbeamercovered{invisible}
-\begin{frame}[t,fragile]{}
-\textbf{Función creciente}
-           \begin{block}{ }
-            Sean $ (X, || \cdot || ,  P )  $ un espacio normado ordenado y $f : [a,b] \longrightarrow X  $ una función vectorial. $f$ es creciente si $ x < y $ implica $ f (x) \leq f(y)  $. 
-        \end{block} 
-
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\begin{frame}[t,fragile]{}
-
-\textbf{Definiciones:}
-\begin{itemize}	        
-	\item \textbf{Variación acotada fuerte}  
- \begin{block}{}
-     Se dice que $f$ \textbf{es de variación acotada sobre } $[a,b]$ si  $ Var_{a}^{b} ( f , X ) : = \sup \{ \sum_{i=1}^{n} || f(t_{i} ) - f(t_{i-1} ) || : P \in \wp  [a,b] \} < \infty $.
- 
- 
- \end{block}
-       \begin{tikzpicture}
-	    % Dibujo el Dominio					+	+	+
-      \draw[color=blue] (0,0) -- (3,0);
-      % Codominio  (Rectángulo ):
-      \draw[fill=gray] (5,-1) rectangle (11,2) node[fill=red!20,draw,double,rounded corners] {$ X $};
-      %Función 
-      \draw[->,color=green] (1.5,0.2) to[bend left] (6,0.8);
-      \draw[->,color=green] (1,0.2) to[bend left] (7,1.4);
-    %  Partición 
-     \draw[fill] (0,0) circle (0.07) node[below]{$ a $}; 
-      \draw[fill] (1,0) circle (0.07) node[below]{$t_{i-1}  $};
-        \draw[fill] (1.5,0) circle (0.07) node[below]{$t_{i}  $}; 
-          \draw[fill] (3,0) circle (0.07) node[below]{$ b  $}; 
-        %f(x_{i} ) , f(x_{i-1} )
-        \shadedraw (6.1,0.8) circle (0.05cm) node[below]{$f(t_{i-1})$};
-        \shadedraw (7.1,1.4) circle (0.05cm) node[below]{$f(t_{i})$};
-        %Unión de f(t_{i} ) a  f(t_{i-1} )
-        \draw[dashed, color=red] (6.1,0.8) -- (7.1,1.4);
-	\end{tikzpicture}
-    \item[$ - $]   \textbf{Variación Acotada Débil}
-    \item[$ - $] \textbf{Variación en orden}
-\end{itemize}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[t,fragile]{}
-
-\textbf{Definiciones:}
-\begin{itemize}      
-	\item[$ - $] \textbf{Variación acotada fuerte} 
-  \item \textbf{Variación Acotada Débil}
-     \begin{columns}
-	\column{.70\textwidth}
-    \begin{tikzpicture}
-%Ejes x and y
-    \draw[->] (-3.5,0) -- (3.9,0) node[below] {$x$};
-    \draw[->] (0,-1) -- (0,3.9) node[left] {$y$};
-    %Grafica verde de la función f
-    \draw[smooth,<->,domain = -3.16:3.17, color=green,very thick]plot (\x,{sin(\x r)*(\x + 1 )+1 });\node at (2,3.9){\small \textcolor{green}{$f$}};
-    %Partición 
-    \draw[fill] (-3.16,0) circle (0.07) node[below]{$t_{0} = a  $};
-    \draw[fill] (-1.8,0) circle (0.07) node[below]{$t_{1}  $};
-    \draw[fill] (-0.5,0) circle (0.07) node[below]{$t_{2}   $};
-    \draw[fill] (1.39,0) circle (0.07) node[below]{$t_{3}   $};
-    \draw[fill] (3.3,0) circle (0.07) node[below]{$t_{4} = b  $};
-  
-      %Partición evaluada en f
-    \draw[fill] (-3.16,1) circle (0.07) node[below]{$(\phi \circ f)(t_{0} )   $};
-    \draw[fill] (-1.8,1.8) circle (0.07) node[below]{$( \phi \circ f )(t_{1} )  $};
-    \draw[fill] (-0.5,0.78) circle (0.07) node[below]{$( \phi \circ f )(t_{2} )   $};
-    \draw[fill] (1.39,3.38) circle (0.07) node[below]{$ ( \phi \circ f ) (t_{3} )   $};
-    \draw[fill] (3.2,1) circle (0.07) node[below]{$ ( \phi \circ f ) (t_{4} )  $};
-  %lineas que unen f(xi) con f(xi-1)
-\draw[dashed, color= purple] (-3.16,1) -- (-1.8,1.8);
-\draw[dashed, color= purple] (-1.8,1.8) -- (-0.5,0.78);
-\draw[dashed, color= purple] (-0.5,0.78) -- (1.39,3.38);
-\draw[dashed, color= purple] (1.39,3.38) -- (3.17,1); 
-\end{tikzpicture}
-	\column{.3\textwidth}
-
-	 \begin{block}{}
-
-      Sea $f : [a,b] \longrightarrow X  $\\ una función vectorial.\\ $f$ es de variación\\ acotada débil\\ si para todo $ \phi \in (X)^{*} $ se cumple que \textcolor{green}{$ \phi \circ f: [a,b] \longrightarrow \mathbb{R} $}\\ es de\\ \textcolor{purple}{variación acotada}.
-	 \end{block}
 \begin{tikzpicture}
-    % Eje X
-    \draw[->] (-1,0) -- (3,0) node[right] {$x$};
-    % Eje Y
-    \draw[->] (0,-1) -- (0,2) node[above] {$y$};
-
-    % Función característica de [0,1]
-    \draw[thick, blue] (0,0) -- (0,1) -- (1,1) -- (1,0);
-    \node at (0.5, -0.5) {$\chi_{[0,1]}(x)$};
-
-    % Función característica de [0,2]
-    \draw[thick, red] (0,0) -- (0,1) -- (2,1) -- (2,0);
-    \node at (1.5, -0.5) {$\chi_{[0,2]}(x)$};
-
-    % Puntos en el eje X
-    \foreach \x in {0,1,2}
-        \draw (\x,1pt) -- (\x,-3pt) node[anchor=north] {$\x$};
+    \draw[color=blue] (0,0) -- (3,0);
+    \draw[fill=gray!30] (5,-1) rectangle (9,2)
+          node[fill=red!20,draw,rounded corners]{$X$};
+    \draw[fill] (0,0) circle (0.07) node[below]{$a$};
+    \draw[fill] (3,0) circle (0.07) node[below]{$b$};
+    \draw[->,color=green!70!black,thick] (2,0.15) to[bend left] (7,1.4);
+    \node at (3.5,2.1){\textcolor{green!70!black}{$f$}};
 \end{tikzpicture}
-\end{columns} 
- 
-	
+
+\medskip
+La pregunta: ¿cómo generalizar la variación total cuando el codominio
+tiene \emph{estructura de orden}?
+
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Tres nociones de variación acotada}
+\framesubtitle{Las generalizaciones no son equivalentes en general}
+
+Sea $f:[a,b]\to X$ una función vectorial. Se definen:
+
+\begin{enumerate}
+    \item \textbf{Variación fuerte:}
+          $\Var_a^b(f,X) := \sup\Bigl\{\sum_{i=1}^n\|f(t_i)-f(t_{i-1})\| :
+          \mathcal{P}\in\wp[a,b]\Bigr\}$.
+
+    \item \textbf{Variación débil:}
+          $f$ es de v.a.\ débil si $\phi\circ f\in BV[a,b]$
+          para todo $\phi\in X^*$.
+
+    \item \textbf{Variación en orden} (en espacios de Riesz):
+          $V_f^o := \sup\Bigl\{\sum_{i=1}^n|f(t_i)-f(t_{i-1})| :
+          \mathcal{P}\in\wp[a,b]\Bigr\}\le M$
+          para algún $M\in X$.
+\end{enumerate}
+
+\medskip
+\alert{Pregunta:} ¿cuáles implicaciones se cumplen entre estas nociones?
+
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Variación acotada fuerte: diagrama}
+\framesubtitle{Generalización directa de la norma}
+
+\begin{itemize}
+    \item \textbf{V.a.\ fuerte:}
+    \begin{block}{}
+        $\Var_a^b(f,X)
+        := \sup\Bigl\{\sum_{i=1}^n\|f(t_i)-f(t_{i-1})\| :
+        \mathcal{P}\in\wp[a,b]\Bigr\} < \infty$
+    \end{block}
+    \begin{tikzpicture}[scale=0.9]
+        \draw[color=blue] (0,0) -- (3,0);
+        \draw[fill=gray!30] (5,-1) rectangle (11,2)
+              node[fill=red!20,draw,rounded corners]{$X$};
+        \draw[->,color=green!70!black] (1.5,0.2) to[bend left] (6,0.8);
+        \draw[->,color=green!70!black] (1,0.2) to[bend left] (7,1.4);
+        \draw[fill] (0,0) circle (0.07) node[below]{$a$};
+        \draw[fill] (1,0) circle (0.07) node[below]{$t_{i-1}$};
+        \draw[fill] (1.5,0) circle (0.07) node[below]{$t_i$};
+        \draw[fill] (3,0) circle (0.07) node[below]{$b$};
+        \shadedraw (6,0.8) circle (0.06) node[below]{\tiny$f(t_{i-1})$};
+        \shadedraw (7,1.4) circle (0.06) node[below]{\tiny$f(t_i)$};
+        \draw[dashed,color=red] (6,0.8) -- (7,1.4);
+        \node[right,red] at (6.5,1.2){\tiny$\|f(t_i)-f(t_{i-1})\|$};
+    \end{tikzpicture}
 \end{itemize}
 
 \end{frame}
 
+%──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}{}
-    \begin{itemize}
-        \item[$ - $] \textbf{Variación acotada fuerte} 
-  \item[$ - $] \textbf{Variación Acotada Débil}
-  \item \textbf{Variación Acotada en Orden}
-  \begin{block}{}
-      Sea $ (X,|| \cdot || ) $ un espacio de Riesz. Una función  $f : [a,b] \longrightarrow X $ es de \textbf{variación acotada respecto al orden}, si existe  $M \in X $ tal que,
-     $$ V_{f}^{o} : = \sup \{ \sum_{i=1}^{n} | f(t_{i} ) - f(t_{i-1} ) | : P \in \wp  [a,b] \} \leq  M .$$
-  \end{block}
-    \end{itemize}
-\end{frame}
+\begin{frame}{Variación acotada débil}
+\framesubtitle{Definición vía funcionales continuos}
 
+\begin{definition}
+$f:[a,b]\to X$ es de \textbf{variación acotada débil} si para todo
+funcional continuo $\phi\in X^*$ la composición
+$\phi\circ f:[a,b]\to\mathbb{R}$ es de variación acotada.
+\end{definition}
 
-
-\begin{frame}{}
-    \begin{block}{Teorema}
-        Sea $X$ un retículo de Banach. Entonces 
-        \begin{enumerate}
-            \item Toda función creciente es orden acotada.
-            \item Si es orden acotada, es débil acotada. 
-        \end{enumerate}
-    \end{block}
-\end{frame}
-
-\begin{frame}{}
-    El siguiente ejemplo es de una función creciente que es de variación acotada débil, pero no es de variación acotada fuerte.
-
-
- \begin{block}{Ejemplo}
-   Sean  $F : [a,b] \longrightarrow L_{\infty [a,b]}  $ dada por $F(t) = \chi_{[0,t]} $ y $ ( L_{\infty [a,b]} , || \cdot ||_{L_{\infty [a,b]} } , P ) $ un ENO, donde $P = \{ f \in L_{\infty [a,b]} : f(x) \geq 0 \mbox{ casi en todas partes } \}   $. 
-     \begin{tikzpicture}
-
-        %Función caracteristica 
-    % Eje X
-    \draw[-] (-1,0) -- (3,0) node[right] {$x$};
-    % Eje Y
-    \draw[-] (0,-1) -- (0,2) node[above] {$y$};
-
-    % Función característica de [0,1]
-    \draw[-, blue] (0,1) -- (1,1);
-    \draw[dashed,blue] (1,1) -- (1,0);
-    \node at (1, -1) {$\chi_{[0,t_{1}]}(x)$};
-    \node at (1, -0.5) {$t_{1}$};
-
-        %Función caracteristica 
-    % Eje X
-    \draw[-] (5,0) -- (9,0) node[right] {$x$};
-    % Eje Y
-    \draw[-] (6,-1) -- (6,2) node[above] {$y$};
-
-    % Función característica de [0,2]
-    \draw[-, red] (6,1) -- (8,1);
-    \draw[dashed,red] (8,1) -- (8,0);
-    \node at (8, -1) {$\chi_{[0, t_{2} ]}(x)$};
-   \node at (8, -0.5) {$t_{2}$};
+\begin{columns}[c]
+\column{.62\textwidth}
+\begin{tikzpicture}[scale=0.72]
+    \draw[->] (-3.5,0)--(3.9,0) node[below]{$x$};
+    \draw[->] (0,-1)--(0,3.9) node[left]{$y$};
+    \draw[smooth,<->,domain=-3.16:3.17,color=green!70!black,very thick]
+        plot (\x,{sin(\x r)*(\x+1)+1});
+    \node at (2,3.9){\small\textcolor{green!70!black}{$f$}};
+    \foreach \x/\l in {-3.16/t_0,-1.8/t_1,-0.5/t_2,1.39/t_3,3.3/t_4}
+        \draw[fill](\x,0) circle(0.07) node[below]{\tiny$\l$};
+    \foreach \pt in {(-3.16,1),(-1.8,1.8),(-0.5,0.78),(1.39,3.38),(3.2,1)}
+        \draw[fill]\pt circle(0.07);
+    \draw[dashed,color=purple]
+        (-3.16,1)--(-1.8,1.8)--(-0.5,0.78)--(1.39,3.38)--(3.17,1);
 \end{tikzpicture}
- \end{block}
+
+\column{.36\textwidth}
+\small
+$\phi\in X^*$ proyecta $f$ sobre $\mathbb{R}$.
+
+\medskip
+Se mide la variación de $\phi\circ f$ con la norma usual de $\mathbb{R}$.
+
+\medskip
+\textcolor{purple}{La variación débil} controla las
+oscilaciones de cada proyección.
+
+\end{columns}
 
 \end{frame}
-    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{No todas las funciones crecientes son de variación acotada fuerte o de variación acotada débil}
-    \begin{itemize}
-        \item \textbf{Ejemplo:} 
-        \begin{block}{}
-            Sean $X=C_{\mathbb{R}}^{1}[0,1]$, $||f|| = ||f||_{\infty} + ||f'||_{\infty}$ y $P_0 = \{f \in X: f(0)=0 \  y  \  f(t)\geq 0, \forall t \in[0,1]\}$.\\  $( X, ||\cdot ||, P_0)$ es un ENO.
-        \end{block}
-        \item Se probará que existe una función creciente que no es de variación acotada débil y por lo tanto no es de variación acotada fuerte.
-      
-    \end{itemize}
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Variación acotada en orden}
+\framesubtitle{Solo tiene sentido en espacios de Riesz}
+
+\begin{definition}
+Sea $(X,\|\cdot\|)$ un espacio de Riesz. Una función $f:[a,b]\to X$
+es de \textbf{variación acotada en orden} si existe $M\in X$ tal que
+\[
+V_f^o := \sup\Bigl\{\sum_{i=1}^n|f(t_i)-f(t_{i-1})| :
+\mathcal{P}\in\wp[a,b]\Bigr\} \le M.
+\]
+\end{definition}
+
+\medskip
+
+\begin{theorem}
+Sea $X$ un retículo de Banach. Entonces:
+\begin{enumerate}
+    \item Toda función creciente es de v.a.\ en orden.
+    \item V.a.\ en orden $\Rightarrow$ v.a.\ débil.
+\end{enumerate}
+\end{theorem}
+
+\medskip
+\alert{Nota:} la variación en orden solo aplica cuando $|x|$ tiene
+sentido, es decir, en espacios de Riesz.
+
+% TODO: verificar hipótesis — precisar si el espacio de Riesz
+% necesita ser un retículo de Banach completo o basta ser retículo normado.
+
 \end{frame}
 
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  SECCIÓN 6 — FUNCIONES CRECIENTES
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{Funciones crecientes}
 
+%──────────────────────────────────────────────────────────────────────────────
 
+\begin{frame}{Funciones crecientes en un ENO}
+\framesubtitle{Generalización del monotonismo}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}
+Sean $(X,\|\cdot\|,\Xp)$ un ENO y $f:[a,b]\to X$ vectorial.
+$f$ es \textbf{creciente} si $x < y$ implica $f(x)\le f(y)$.
+\end{definition}
 
+\medskip
 
-\begin{frame}{}
-    \begin{itemize}
-        \item Función creciente
-          \begin{block}{}
-            Sea $ f: [0,1] \longrightarrow X  $ dada por 
-                 \[ f(t) = \left\{ \begin{array}{lcc}
-             \bar{0} , &   si  &  t=1 , \\
-             \\ x_{n} ,  &  si  & t \in [1-\frac{1}{n},1-\frac{1}{n+1}) . 
-             \end{array}
-   \right. \]
-   Donde $x_{n}, \bar{0} \in X $ con $x_{n}(s) = - s^{n} $ y $ \bar{0} (s) = 0 $.
-        \end{block}
-        \item Función lineal y continua
-        \begin{block}{}
-            $ D: X \longrightarrow \mathbb{R} $ dado por $D(f)= {f}'(1) $.\\
-            Es fácil ver que $  |D(f)|= |{f}'(1)| \leq || f' ||_{\infty} \leq || f|| $.
-        \end{block}
-    \end{itemize}
+\begin{alertblock}{Pregunta clave}
+¿Toda función creciente es de variación acotada?
+
+\smallskip
+En $\mathbb{R}$: \textbf{sí}. En un ENO general: \textbf{depende del cono}.
+\end{alertblock}
+
+% IDEA ORAL: Esta es la pregunta central de la sección. Los resultados que
+% siguen responden exactamente cuándo sí y cuándo no.
+
 \end{frame}
 
+%──────────────────────────────────────────────────────────────────────────────
 
+\begin{frame}{Ejemplo: creciente con v.a.\ débil pero no fuerte}
+\framesubtitle{Las hipótesis no son decorativas}
 
+\begin{block}{Ejemplo}
+Sea $F:[0,1]\to L_\infty[0,1]$ dada por $F(t)=\chi_{[0,t]}$
+con $\Xp=\{f\in L_\infty[0,1]:f\ge 0 \text{ c.t.p.}\}$.
 
-\begin{frame}{}
-    Por último, 
-     \begin{block}{}
-                 \[ (D \circ  f)(t) = \left\{ \begin{array}{lcc}
-             0 , &   si  &  t=1 , \\
-             \\ -n ,  &  si  & t \in [1-\frac{1}{n},1-\frac{1}{n+1}) . 
-             \end{array}
-   \right. \]
-   Ya que  $x_{n}' (t) = - n t^{n-1} $ y $D(x_{n}) = x_{n}' (1) $.
-  
-        \end{block}
+\medskip
+$F$ es \textbf{creciente} y de \textbf{v.a.\ débil}, pero
+\textbf{no} es de v.a.\ fuerte.
+\end{block}
 
-       Sea $m \in \mathbb{N} $ se define $  P_{m} = \{  0,  1 - \frac{1}{m+1}, 1 \}  $ se tiene que 
-   \begin{block}{}
-      $ V_{a}^{b} \big( (D \circ  f) , P_{m} \big) \geq | (D \circ  f) (1) - (D \circ  f) ( 1 - \frac{1}{m+1}) | = m+1$. 
-   \end{block}
-   Por lo tanto, $(D \circ  f)$ no es de variación acotada.%, es decir, f no es débilmente de variación acotada. 
-  
+\begin{tikzpicture}[scale=0.85]
+    \draw[-] (-1,0)--(3,0) node[right]{$x$};
+    \draw[-] (0,-0.5)--(0,2) node[above]{$y$};
+    \draw[-,blue,thick] (0,1)--(1,1);
+    \draw[dashed,blue] (1,1)--(1,0);
+    \node at (1,-0.9){\small$\chi_{[0,t_1]}$};
+    \node[blue] at (1,-0.4){\small$t_1$};
+    \draw[-] (5,0)--(9,0) node[right]{$x$};
+    \draw[-] (6,-0.5)--(6,2) node[above]{$y$};
+    \draw[-,red,thick] (6,1)--(8,1);
+    \draw[dashed,red] (8,1)--(8,0);
+    \node at (8,-0.9){\small$\chi_{[0,t_2]}$};
+    \node[red] at (8,-0.4){\small$t_2$};
+\end{tikzpicture}
+
 \end{frame}
 
+%──────────────────────────────────────────────────────────────────────────────
 
+\begin{frame}{Contraejemplo: creciente sin ninguna variación acotada}
+\framesubtitle{Por qué esta hipótesis importa}
 
+\begin{block}{Contraejemplo}
+Sea $X=C_{\mathbb{R}}^1[0,1]$ con $\|f\|=\|f\|_\infty+\|f'\|_\infty$
+y $\Xp=\{f:f(0)=0,\,f(t)\ge 0\}$.
 
+\medskip
+Existe una función $f:[0,1]\to X$ \textbf{creciente} que
+\textbf{no} es de v.a.\ débil (y por tanto tampoco de v.a.\ fuerte).
+\end{block}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Construcción.}
+Se define
+$f(t) = x_n$ para $t\in[1-\tfrac{1}{n},1-\tfrac{1}{n+1})$
+con $x_n(s)=-s^n$, y $f(1)=\bar{0}$.
 
-\begin{frame}{}
-\textbf{Lema:} Sea $X$ un ENO. Son equivalentes
-    \begin{itemize}
-         \item $ X_{+} $ es normal.
-        \item  Si  toda $ f: [a,b] \longrightarrow X  $ creciente es de variación acotada débil.
-        \item Si toda sucesión creciente $ \{ x_{n} \} $ en $X$ converge, si y sólo si existe $ \{ x_{n_{k}} \} $ una subsucesión de $ \{ x_{n} \} $ convergente.
-       
-    \end{itemize}
+El funcional $D:X\to\mathbb{R}$, $D(f)=f'(1)$, satisface
+$|D(f)|\le\|f\|$, pero
+$\Var_a^b(D\circ f,P_m)\ge m+1$ para $P_m=\{0,1-\tfrac{1}{m+1},1\}$.
+
+Por tanto, $D\circ f\notin BV[0,1]$.
+
 \end{frame}
 
-\begin{frame}{}
-    \begin{block}{Teorema}
-        Si $X$ es un espacio normado ordenado con cono extendible, entonces las funciones crecientes son de variación acotada fuerte. 
-    \end{block}
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Equivalencia: normalidad y variación débil}
+\framesubtitle{El cono normal es la condición correcta}
+
+\begin{block}{Lema (equivalencia)}
+Sea $X$ un ENO. Son equivalentes:
+\begin{enumerate}
+    \item $\Xp$ es \textbf{normal}.
+    \item Toda $f:[a,b]\to X$ creciente es de v.a.\ \textbf{débil}.
+    \item Toda sucesión creciente $\{x_n\}$ en $X$ converge
+          si y solo si tiene una subsucesión convergente.
+\end{enumerate}
+\end{block}
+
+\medskip
+
+\begin{alertblock}{Lectura del resultado}
+La normalidad del cono es \emph{exactamente} la condición que hace que
+el monotonismo implique variación débil.
+El contraejemplo anterior muestra que sin normalidad esta implicación falla.
+\end{alertblock}
+
+% IDEA ORAL: Insistir en que el lema dice "si y solo si". No es solo
+% una condición suficiente: es la condición caracterizadora exacta.
+
 \end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Cono extendible y variación acotada fuerte}
+\framesubtitle{Resultado positivo bajo una hipótesis más fuerte}
+
+\begin{theorem}
+Si $X$ es un ENO con cono \textbf{extendible}, entonces toda función
+creciente $f:[a,b]\to X$ es de \textbf{variación acotada fuerte}.
+\end{theorem}
+
+\medskip
+
+\begin{block}{Diagrama de implicaciones}
+\centering
+\medskip
+$\Xp$ extendible
+$\;\Rightarrow\;$
+creciente $\Rightarrow$ v.a.\ fuerte
+
+\medskip
+$\Xp$ normal
+$\;\Rightarrow\;$
+creciente $\Leftrightarrow$ v.a.\ débil
+
+\medskip
+(Sin hipótesis sobre el cono: ninguna implicación garantizada)
+\end{block}
+
+\end{frame}
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  SECCIÓN 7 — DESCOMPOSICIÓN DE JORDAN
+%% ═══════════════════════════════════════════════════════════════════════════
 \section{Descomposición de Jordan}
-\begin{frame}{}
-    \begin{block}{Definición}
-        Un espacio normado ordenado $X$ cumple la descomposición de Jordan si para toda $ f: [a,b] \longrightarrow X $ de variación acotada, existen $  f_{1}, \ f_{2} : [a,b] \longrightarrow X  $ funciones crecientes tales que $ f=f_{1} - f_{2} $.
-    \end{block}
-    \begin{block}{Teorema}
-        Si $X$ cumple la descomposición de Jordan para funciones de variación acotada fuerte, entonces $ X_{+} $ es generador.
-    \end{block}
-    \begin{block}{Teorema}
-        Si  $ X_{+} $ es sólido, entonces $X$ cumple la descomposición de Jordan para funciones de variación acotada fuerte.
-    \end{block}
+\include{Descomposicion de Jordan}
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  SECCIÓN 8 — EL ESPACIO BV([a,b],X)
+%% ═══════════════════════════════════════════════════════════════════════════
+\include{Espacio BVX}
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  SECCIÓN 9 — CONCLUSIONES
+%% ═══════════════════════════════════════════════════════════════════════════
+\include{Conclusiones}
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  SECCIÓN 10 — TRABAJO FUTURO
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{Trabajo futuro}
+
+\begin{frame}{Integración de Riemann-Stieltjes vectorial}
+\framesubtitle{Siguiente línea de investigación}
+
+\begin{definition}
+Una función $f:[a,b]\to X$ acotada es \textbf{integrable en el sentido
+Riemann-Stieltjes} respecto a $g:[a,b]\to\mathbb{R}$ si existe $A\in X$
+tal que, dado $\epsilon>0$, existe $\delta>0$ de modo que para toda
+partición $\{(I_i,\xi_i):i=1,\ldots,n\}$ de $[a,b]$ con norma menor
+que $\delta$, se cumple
+\[
+\Bigl\|\sum_{i=1}^n f(\xi_i)\bigl(g(t_i)-g(t_{i-1})\bigr) - A\Bigr\|
+< \epsilon.
+\]
+\end{definition}
+
+\medskip
+
+\begin{alertblock}{Conexión con los resultados obtenidos}
+Si $g$ es de v.a.\ y $f$ es continua, ¿basta con que $g$ sea de v.a.\
+débil para garantizar la existencia de la integral?
+
+El papel del cono $\Xp$ en la integrabilidad es la siguiente pregunta abierta.
+\end{alertblock}
+
 \end{frame}
 
-\begin{frame}{Espacios estudiados}
-    \begin{block}{Definición}
-        Sea $\left( X, || \cdot  ||, P \right) $ un espacio normado ordenado.\\ Se definen 
-		$ BV ( [a,b], X ) = \{   f: [a,b] \longrightarrow X : Var_{a}^{b} (f, X) < \infty \} $\\
-		y $ BV([a,b],X)_{0} = \{ f \in BVX : f(a) = 0 \}  $.
-    \end{block}
-    $  || f ||_{BV} = Var_{a}^{b}  ( f , X ) + ||  f(a) || $ es una norma.
-\end{frame}
-
-\begin{frame}{}
-    \begin{block}{Lema}
-        Sea $X$ un espacio normado ordenado. Entonces $ (  BV([a,b],X) ,  || \cdot ||_{BV} , P_{c} ) $ es un espacio normado ordenado, con el cono $ P_{c} = \{ f \in  BV([a,b],X) : f \mbox{ es creciente y } f \geq 0 \} $.
-    \end{block}
-   Si $ X_{+} $ es normal, entonces $ P_{c} $ es normal. 
-\end{frame}
-
-\begin{frame}{}
-    \begin{block}{Teorema}
-        Sea $X$ un ENO con cono sólido $P$, $\mu $ una cota superior en orden de la esfera y $ f : [a,b] \longrightarrow X  $ una función vectorial de variación acotada. Entonces las funciones vectoriales $ M_{f}, N_{f} : [a,b] \longrightarrow X $ definidas por 
-		\begin{align*}
-			M_{f} (x) & = \frac{1}{2} \Bigg[ Var_{a}^{x} (f, X) \mu   + f (x) - f(a) \Bigg] ,\\
-			N_{f} (x) & = \frac{1}{2} \Bigg[  Var_{a}^{x} (f, X) \mu   -  f (x) + f(a) \Bigg] 
-		\end{align*}
-		son funciones crecientes de variación acotada tal que
-		\begin{enumerate}
-			\item $ f (x) = M_{f} (x) - N_{f} (x) + f(a)  $,
-			\item $  Var_{a}^{b} ( M_{f} , X), Var_{a}^{b} ( N_{f} , X) \leq  \frac{1 + || \mu || }{2}   Var_{a}^{b} (f, X) $,
-			\item $ Var_{a}^{b} ( M_{f} + N_{f} , X) =  Var_{a}^{b} (f, X) || \mu || $.
-			\item $ Var_{a}^{b} ( M_{f} - N_{f} , X) =  Var_{a}^{b} (f, X)  $.
-			\item $ || f ||_{BV} = || M_{f} - N_{f} ||_{BV} + || f(a ) || $.
-			\item Si además $X$ es un álgebra, entonces $ BV $ es un álgebra.
-		\end{enumerate}
-    \end{block}
-\end{frame}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Trabajo a futuro}
-   
-
-
-    \begin{block}{Definición:}
-        Una función $ f:[a,b] \longrightarrow X $ acotada es \textbf{Riemann-Stieltjes} respecto a $ g:[a,b] \longrightarrow \mathbb{R} $ si existe $ A \in X  $ tal que 
-        
-        dado $ \epsilon > 0  $, existe $ \delta >0  $ tal que para toda partición $ \{ (I_{i} , \xi_{i} ) : i = 1,..., n \}   $ de $ [a,b]  $ con norma menor que $  \delta  $, se cumple que
-        \begin{equation*}
-            || \sum_{i=1}^{n}   f( \xi_{i} ) (g( t_{i} )  - g(t_{i-1}) ) - A  || < \epsilon .
-        \end{equation*}
-        
-    \end{block}
-\end{frame}
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-
-
-
-
-
-	
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-%\section{Descomposición de Jordan}
-
-%   \include{Descomposicion de Jordan}
-
-
-%\include{Espacio BVX}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\include{Conclusiones}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  BIBLIOGRAFÍA  %%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  BIBLIOGRAFÍA
+%% ═══════════════════════════════════════════════════════════════════════════
 \section{Bibliografía}
-\thispagestyle{empty}
-\newpage
 
-\begin{frame}[t,fragile]{Bibliografía}
+\begin{frame}[t,allowframebreaks]{Bibliografía}
 \begin{thebibliography}{99}
-    \bibitem{Baz} \textsc{Agarwal Ravi P., Meehan Maria } y \textsc{O'Regan Donal},	\textit{Fixed point theory and applications}, volumen 141.
-	Cambridge University Press. First Edition. 2001.
 
-	\bibitem{cone2007}    \textsc{Aliprantis, Charalambos D} y \textsc{Tourky, Rabee}.  \textit{Cones and duality}. American Mathematical Soc., volumen 84.  \hypertarget{55}{(2007)}.\hyperlink{01}{\beamergotobutton{Regreso}}
-	
-	 \bibitem{Gou2004} \textsc{Gou D., Yeol J. C. } y \textsc{Jiang Z.}	\textit{Partial Ordering Methods in Nonlinear Problems}, 
-	Nova Science Publishers Inc. Segunda edición.\hypertarget{05}{ (2004)}.
-	\hyperlink{22}{\beamergotobutton{Regreso}}
+    \bibitem{perez2022jordan}
+    \textsc{Pérez-Becerra, Tomás; Escamilla-Reyna, Juan Alberto;
+    Luciano-Gerardo, Roque Vidal; Mendoza-Torres, Francisco J.;
+    Rodríguez-Tzompantzi, Daniela}.
+    \textit{The Jordan Decomposition in Ordered Normed Spaces}.
+    Mediterranean Journal of Mathematics, vol.\ 19, núm.\ 5. Springer, 2022.
 
-	
- \bibitem{Granas1994} \textsc{Granas, Andrzej} 	\textit{Continuation Method for Contractive Maps}, 
-	Journal of the Juliusz Schauder Center. Volume 3. (1994)
-	
-	
-	
+    \bibitem{cone2007}
+    \textsc{Aliprantis, Charalambos D.\ y Tourky, Rabee}.
+    \textit{Cones and Duality}.
+    American Mathematical Society, vol.\ 84. 2007.
 
+    \bibitem{Gou2004}
+    \textsc{Gou D., Yeol J.\ C.\ y Jiang Z.}
+    \textit{Partial Ordering Methods in Nonlinear Problems}.
+    Nova Science Publishers Inc., segunda edición. 2004.
 
+    \bibitem{Roque}
+    \textsc{Luciano Gerardo, Roque Vidal}.
+    \textit{Teoremas del Punto Fijo para Funciones Monótonas y sus Aplicaciones}
+    (Tesis de Licenciatura). FCFM-BUAP, 2018.
 
+    \bibitem{anel}
+    \textsc{Vázquez Martínez, Anel}.
+    \textit{Teorema del Punto Fijo en Espacios de Banach Ordenados y Aplicaciones}
+    (Tesis de Maestría). FCFM-BUAP, 2018.
 
+    \bibitem{OL2016}
+    \textsc{Jiang, Shujun y Li, Zhilong}.
+    \textit{Fixed Point Theorems of Order-Lipschitz Mappings in Banach Algebras}.
+    Fixed Point Theory and Applications. 2016.
+
+    \bibitem{OL2018}
+    \textsc{Jiang, Shujun y Li, Zhilong}.
+    \textit{Order-Lipschitz Mappings Restricted with Linear Bounded Mappings
+    in Normed Vector Spaces without Normalities}.
+    Faculty of Sciences and Mathematics, University of Niš. 2018.
 
 \end{thebibliography}
 \end{frame}
 
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  DIAPOSITIVA FINAL
+%% ═══════════════════════════════════════════════════════════════════════════
 
+\begin{frame}{}
+\begin{center}
+    \Huge ¡Gracias por su atención!
 
-\thispagestyle{empty}
-\newpage
-
-\begin{thebibliography}{99}    
-    \bibitem{G.E} \textsc{ HARDY, G.E.}, \textsc{ ROGERS, T.D.}
-	 \textit{A generalization of a fixed point theorem of reich}. Canad. Math. Bull, volume 16. (1973).
-
-	\bibitem{OL2016}   \textsc{Jiang, Shujun} y \textsc{Li, Zhilong}.  Article. \textit{Fixed point theorems of order-Lipschitz mappings in Banach algebras}, Fixed Point Theory and Applications.  \hypertarget{03}{(2016)}.
-		\hyperlink{33}{\beamergotobutton{Regreso}}
-	
-	\bibitem{OL2018}    \textsc{Jiang, Shujun} y \textsc{Li, Zhilong}.  Article. \textit{Order-Lipschitz Mappings Restricted with Linear Bounded Mappings in Normed Vector Spaces without Normalities of Involving Cones via Methods of Upper and Lower Solutions}, Faculty of Sciences and Mathematics University of Ni\v{s}. \hypertarget{02}{(2018)}. \hyperlink{11}{\beamergotobutton{Regreso}}
-
-
-
-\bibitem{Roque}   \textsc{Luciano Gerardo Roque Vidal,} \textit{TEOREMAS DEL PUNTO FIJO PARA FUNCIONES MONÓTONAS Y SUS APLICACIONES} (Tesis de Licenciatura). FCFM-BUAP. 2018.
-
-
-
-
-\bibitem{Rhoad} \textsc{Rhoades Billy E.} 
-	\textit{A comparison of various definitions of contractive mappings}. Transactions of the American Mathematical Society,  volumen 226. (1977).
-
- \bibitem{ReichNew} \textsc{Shaoyuan Xu}, \textsc{Suyu Cheng} y \textsc{Zuoling Zhou} 
-	\textit{Reich´s iterated function systems and well-posedness via fixed point theory}. Fixed Point Theory and Applications, volumen 2015. (2015).
-
-\bibitem{anel}   \textsc{Vázquez Martínez Anel,} \textit{Teorema del Punto Fijo en Espacios de Bananch Ordenados y
-		Aplicaciones} (Tesis de Maestría). FCFM-BUAP. 2018.
-
-	\bibitem{perez2022jordan} \textsc{P{\'e}rez-Becerra, Tom{\'a}s and Escamilla-Reyna, Juan Alberto and Luciano-Gerardo, Roque Vidal and Mendoza-Torres, Francisco J and Rodr{\'\i}guez-Tzompantzi, Daniela }  \textit{The Jordan Decomposition in Ordered Normed Spaces}.
-   Mediterranean Journal of Mathematics,
-  volume 19,
-  number 5, Springer,
-  2022.
-  
-
-	
-\end{thebibliography}
-
-\thispagestyle{empty}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  PARTE DESPUÉS DE LA BIBLIOGRAFÍA %%%%%%%%%%%%%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\nonumber
-\newpage
-
-
-	\begin{center}
-		\Huge ¡Gracias por su atención!	
-		
-	\end{center}
-   %  \begin{center}
-    % \Large ¿Preguntas?	
-    % \end{center}
-	\thispagestyle{empty}
-\newpage%
-	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Theorem} 		Let $f:[a,b]\rightarrow l^{1}$ be a vector function and $f_{j} :[a,b]\rightarrow \mathbb{R} $ with $ j \in \mathbb{N} $ such that for all  $t\in [a,b]$
-		\[f(t)=\sum_{j=1}^{\infty} f_{j}(t)e_{j} , \]
-		where $ e_{j} $ is a unit vector on
-	 $l^{1}$.\\	
-	 If $f$ is bounded variation, then $  f_{j}$ is bounded variation for all  $ j \in \mathbb{N} $  and 
-		
-		$  V(f,[a,b]) = \sum_{j=1}^{\infty} V(f_{j},[a,b])\ $.\\ 
-	Proof: \\ 
-	 Let  $P=\{a=t_{0}<\cdots <t_{n}=b\}$ a partition of  $[a,b]$.
-		Then
-		\[\sum_{i=1}^{n}|f_{j}(t_{i})-f_{j}(t_{i-1}))|\leq \sum_{i=1}^{n}\|f(t_{i})-f(t_{i-1})\|_{1}\leq V(f,[a,b]).\]
-
-\thispagestyle{empty}
-\newpage%
-	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-  
-		Thus, $f_{j}$is bounded variation on $[a,b]$ and
-		\[V(f_{j},[a,b])\leq V(f,[a,b]).\]
-		
-		First, we will prove 	$ \sum_{j=1}^{\infty} V(f_{j},[a,b])\leq V(f,[a,b])$.
-		
-		
-		Next,  let's suppose $ V(f,[a,b]) <  \sum_{j=1}^{\infty} V(f_{j},[a,b])   $, then exists $n_{0} \in \mathbb{N}  $ such that $ V(f,[a,b]) <  \sum_{j=1}^{n_{0}} V(f_{j},[a,b])   $.
-
-
-Let $ \epsilon = \dfrac{\sum_{j=1}^{n_{0}} V(f_{j},[a,b]) - V(f,[a,b])}{n_{0}} > 0$, then for all $ j \in \{ 1,  \cdots , n_{0}  \} $	 exists $ P_{j} = \{a=x_{0}<\cdots < x_{n_{j}}= b \}  $	a partition of  $[a,b]$ such that 
-\begin{equation*}
-    \sum_{k=1}^{n_{j}} |f_{j}(x_{k})-f_{j}(x_{k-1}) | > V(f_{j},[a,b]) - \epsilon .
-\end{equation*}
-
-\thispagestyle{empty}
-\newpage%
-	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-	Let $ P = \bigcup_{j=1}^{n_{0}} P_{j} $ a partition of $ [a,b]   $ and $ m = |P| - 1 $. As
-\begin{equation*}
-    \sum_{k=1}^{n_{j}} |f_{j}(x_{k})-f_{j}(x_{k-1}) | \leq \sum_{k=1}^{m} |f_{j}(x_{k})-f_{j}(x_{k-1}) | ,
-\end{equation*}
-then 
-\begin{equation*}
-    V(f,[a,b]) =  \sum_{j=1}^{n_{0}}[ V(f_{j},[a,b]) -\epsilon ] <   \sum_{j=1}^{n_{0}}  \sum_{k=1}^{n_{j}} |f_{j}(x_{k})-f_{j}(x_{k-1}) | \leq  \sum_{j=1}^{n_{0}}  \sum_{k=1}^{m} |f_{j}(x_{k})-f_{j}(x_{k-1}) | .
-\end{equation*}
-
-On the other hand, 
-
-\thispagestyle{empty}
-\newpage%
-	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\begin{align*}
-  \sum_{j=1}^{n_{0}}  \sum_{k=1}^{m} |f_{j}(x_{k})-f_{j}(x_{k-1}) | & = \sum_{k=1}^{m} \sum_{j=1}^{n_{0}} |f_{j}(x_{k})-f_{j}(x_{k-1}) | \\
-    & \leq \sum_{k=1}^{m} \sum_{j=1}^{\infty} |f_{j}(x_{k})-f_{j}(x_{k-1}) | \\
-    & \leq V(f,P) \leq V(f, [a,b]) .
-\end{align*}
-So, $ V(f, [a,b]) < V(f, [a,b])   $ which is not possible.
-
-Thus, 	$ \sum_{j=1}^{\infty} V(f_{j},[a,b])\leq V(f,[a,b])$.
-
-
-
-	
-	Now we will prove $  V(f,[a,b]) \leq  \sum_{j=1}^{\infty} V(f_{j},[a,b])\ $.\\
-
- \thispagestyle{empty}
-\newpage%
-	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	Let $P=\{a=t_{0}<\cdots <t_{n}=b\}$ be a partition of $[a,b]$.
-	Then 
-	\begin{align*}
-		\sum_{j=1}^{n}\|f(t_{j})-f(t_{j-1})\|_{1} & =\sum_{j=1}^{n}\left(\sum_{i=1}^{\infty}|f_{i}(t_{j})-f_{i}(t_{j-1})|\right)\\
-		& =\sum_{i=1}^{\infty}\left(\sum_{j=1}^{n}|f_{i}(t_{j})-f_{i}(t_{j-1})|\right) \\
-		& \leq \sum_{i=1}^{\infty}V(f_{i},[a,b]).
-	\end{align*}
-	
-	
-	
-	
-	Thus, $f$ is bounded variation and 
-	
-	\[V(f,[a,b])\leq \sum_{i=1}^{\infty}V(f_{i},[a,b]).\]
-	
-\thispagestyle{empty}
-	\newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
-
-\thispagestyle{empty}
-	\newpage
-
- 
-    \thispagestyle{empty}
-	\newpage
-
- 
-    \begin{proof}[My proof]
-        A proof.
-    \end{proof}
-    \begin{example}[My example]
-        An example.
-    \end{example}
-
-   % \begin{block}{My block}
-    %    A block.
-    %\end{block}    
-
-
-
-\thispagestyle{empty}
-	\newpage
-    \begin{frame}{El espacio $ l^{1} $}
-    Propiedades:
-    \begin{enumerate}
-        \item Es un espacio de Schur.
-        \item Todos los intervalos ordenados cerrados son compactos
-        %\item Dependiendo su orden es normal o no. 
-    \end{enumerate}
+    \bigskip
+    \normalsize
+    \textit{Preguntas y comentarios son bienvenidos.}
+\end{center}
 \end{frame}
 
-\begin{frame}{Espacio $ C^{1} ([a,b], X) $}
-Sea $X$ un ENO  donde $ X_{+} $ es normal y $ E^{1}  = C^{1} ( [a,b],X) $. Se define $E_{+}^{1} = \{ f \in E^{1}: f(t) \geq 0, f'(t) \geq 0 \ \forall t \in [a,b]  \} $ y $ || f ||_{\infty} = \sup \{ || f(t) ||_{X} : t \in [a,b] \} $.\\
-      Propiedades:
-    \begin{enumerate}
-        \item Si $X_{+}$ es normal, entonces $E_{+}^{1}$ es normal.
-        \item Si en $X$ todos los intervalos ordenados cerrados son compactos, entonces en $E^{1}$ todos los intervalos ordenados cerrados son compactos.
-        \item Dependiendo su orden es normal o no. 
-    \end{enumerate}
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  APÉNDICE — MATERIAL DE RESPALDO
+%% ═══════════════════════════════════════════════════════════════════════════
+\appendix
+\section*{Material de respaldo}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Propiedades del espacio $l^1$}
+\framesubtitle{Material de respaldo}
+\begin{enumerate}
+    \item Es un espacio de Schur
+          (convergencia débil implica convergencia en norma).
+    \item Todo intervalo ordenado cerrado $[u,v]$ en $l^1$ es
+          \textbf{compacto}.
+\end{enumerate}
+
+\medskip
+
+Estas propiedades son relevantes para aplicar teoremas de punto fijo
+en $l^1$ con el orden coordinada a coordenada.
 \end{frame}
 
-\begin{frame}{Teoremas de Punto Fijo}
-    \begin{block}{Teorema 1}
-        Sean $X$ un ENO con la propiedad de Schur con $ X_{+} $ y $u_0, v_0 \in X$ con $u_0 < v_0$. \\
-	Si  $A:[u_0,v_0] \rightarrow [u_0,v_0]$ subcontinuo creciente y existe $B$ débilmente compacto tal que $A([u_0, v_0]) \subseteq B$, entonces $A$ tiene un punto fijo minimal y maximal en $[u_0,v_0]$.
-    \end{block}
-    \begin{block}{Teorema 2}
-        	Sean $X$ un ENO con la propiedad de que todo intervalo ordenado $ [a,b] $ es compacto y $u_0, v_0 \in X$ con $u_0 < v_0$. \\
-	Si  $A:[u_0,v_0] \rightarrow [u_0,v_0]$  creciente, entonces $A$ tiene un punto fijo minimal y maximal en $[u_0,v_0]$.
-    \end{block}
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Teoremas de punto fijo en ENOs}
+\framesubtitle{Aplicaciones directas — material de respaldo}
+
+\begin{block}{Teorema 1 (espacio de Schur)}
+Sea $X$ un ENO con la propiedad de Schur, $u_0,v_0\in X$ con
+$u_0<v_0$.
+Si $A:[u_0,v_0]\to[u_0,v_0]$ es subcontinuo creciente y existe $B$
+débilmente compacto con $A([u_0,v_0])\subseteq B$,
+entonces $A$ tiene un punto fijo minimal y maximal.
+\end{block}
+
+\begin{block}{Teorema 2 (intervalos compactos)}
+Sea $X$ un ENO donde todo intervalo ordenado $[a,b]$ es compacto,
+$u_0,v_0\in X$ con $u_0<v_0$.
+Si $A:[u_0,v_0]\to[u_0,v_0]$ es creciente,
+entonces $A$ tiene un punto fijo minimal y maximal.
+\end{block}
+
 \end{frame}
 
+%──────────────────────────────────────────────────────────────────────────────
 
+\begin{frame}{El espacio $C^1([a,b],X)$ como ENO}
+\framesubtitle{Material de respaldo}
+
+Sea $X$ un ENO con $\Xp$ normal y $E^1=C^1([a,b],X)$.
+
+Se define $E_+^1=\{f\in E^1:f(t)\ge 0,\;f'(t)\ge 0\;\forall t\}$
+y $\|f\|_\infty=\sup\{\|f(t)\|_X:t\in[a,b]\}$.
+
+\medskip
+
+\textbf{Propiedades:}
+\begin{enumerate}
+    \item Si $\Xp$ es normal, entonces $E_+^1$ es normal.
+    \item Si en $X$ todos los intervalos ordenados cerrados son compactos,
+          entonces en $E^1$ todos los intervalos ordenados cerrados son
+          compactos.
+    \item % TODO: verificar hipótesis — la normalidad del cono de E^1
+          % depende de la norma elegida; revisar con la norma C^1 vs supremo.
+\end{enumerate}
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Demostración: Teorema en $l^1$}
+\framesubtitle{Material de respaldo}
+
+\begin{theorem}
+Sea $f:[a,b]\to l^1$ con coordenadas $f_j$. Si $f\in\BVX$, entonces
+$f_j\in BV[a,b]$ para todo $j\in\mathbb{N}$ y
+$V(f,[a,b])=\sum_{j=1}^\infty V(f_j,[a,b])$.
+\end{theorem}
+
+\textit{Idea de la demostración.}
+La inclusión $\sum V(f_j)\le V(f)$ se obtiene de la desigualdad
+$\sum_i|f_j(t_i)-f_j(t_{i-1})|\le\sum_i\|f(t_i)-f(t_{i-1})\|_1$.
+
+Para la otra desigualdad, si $V(f)<\sum V(f_j)$, existe $n_0$ tal que
+$V(f)<\sum_{j=1}^{n_0}V(f_j)$; tomando $\epsilon$ adecuado y una
+partición común $P=\bigcup_j P_j$ se obtiene una contradicción por
+intercambio de sumas finitas.
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Demostración: normalidad del cono (lema)}
+\framesubtitle{Material de respaldo}
+
+\textbf{Lema.} Sea $X$ un ENO. Son equivalentes:
+(i) $\Xp$ normal; (ii) toda sucesión creciente tiene subsucesión
+convergente implica convergencia de la sucesión.
+
+\medskip
+\textit{($\Rightarrow$)} Sea $\{x_n\}$ creciente con subsucesión $\{x_{n_k}\}\to x^*$.
+Para $n\ge n_k$: $0\le x^*-x_n\le x^*-x_{n_k}$, y por normalidad
+$\|x^*-x_n\|\le M\|x^*-x_{n_k}\|\to 0$.
+
+\textit{($\Leftarrow$)} Si $\Xp$ no es normal, existen $0\le x_n\le y_n$
+con $\|x_n\|>2^n\|y_n\|$. Sea $z_n=x_n/\|x_n\|$, $v_n=y_n/(2^n\|y_n\|)$.
+Se tiene $0\le z_n\le v_n$ y $\sum\|v_n\|=1$, de donde $\sum v_n\to v$.
+La sucesión $w_n$ construida en términos de sumas parciales tiene
+una subsucesión convergente pero no converge. Contradicción.
+\end{frame}
 
 \end{document}

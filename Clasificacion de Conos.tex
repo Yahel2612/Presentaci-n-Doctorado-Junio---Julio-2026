@@ -1,159 +1,143 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ─────────────────────────────────────────────────────────────────────────────
+%%  Clasificación de conos y ejemplos de ENO
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Clasificación de conos}
 
-
-
-\begin{frame}{}
-    \begin{block}{}
-	\centering
-	\LARGE  \textcolor{Azul}{Algunos tipos de conos}
-	
-\end{block}
-
-
-\begin{itemize}
-	\item \textbf{Normales}
-	\begin{itemize}
-	   \item[$ \ast $]  $ X_{+} $  se llama			\textbf{Normal}, si existe $ M>0 $ tal que para todo $ x, \ y \in X_{+}, $ \\ si $ 0 \leq x \leq y, $ entonces $ || x || \leq M || y||. $
-    \item[$ \ast $]  \textbf{Extendible} si existe $ x^{*} \in X^{*} $  y  $ \alpha > 0  $ tal que\\ $x^{*}( x ) \geq \alpha || x || $ para todo $x \in P$.
-	\end{itemize}
-	\item \textbf{No normales}
-	\begin{itemize}
-		\item[$ \ast $]  \textbf{Generador},  si $X=X_{+} - X_{+} $, es decir, para todo $x \in X $ existen $ \alpha , \ \beta \in X_{+} $ tal que $ x= \alpha - \beta $. 
-         \item[$\ast $]   \textbf{Sólido}, si $int( X_{+} ) \neq \emptyset $, es decir, si $X_{+}$ tiene puntos interiores.
-	\end{itemize}
-	
-\end{itemize}
-
-
-\end{frame}
-
-
-
-   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{}
-	
-	
-	\def\firstcircle{(0.5,0) circle (2cm)}
-	%\def\secondcircle{(60:2cm) circle (1.5cm)}
-	\def\thirdcircle{(0:3.7cm) circle (2cm)}
-	%\def\thirdcircle{(3,-0.7) circle (2.3cm)}
-	\begin{tikzpicture}
-		\begin{scope}[shift={(4cm,-5cm)}, fill opacity=0.5]
-			\fill[green] \firstcircle;
-			%\fill[red] \secondcircle;
-			\fill[red] \thirdcircle;
-			%\draw \firstcircle node[below] {\hyperlink{contraejemplo}{$(1)$}$ \Rightarrow (2) \Rightarrow (3)$};
-			% \draw \secondcircle node [above] {$B$};
-			%\draw \thirdcircle node [below] {$(3) \Longleftrightarrow  (1) $};
-			\draw  (-2,-2.5) rectangle (7,2) node [text=black,above] {$(X,||\cdot || , P) $ \hypertarget{ENO}{ENO}};
-		\end{scope}
-	\end{tikzpicture}
-	
-	\textcolor{green}{verde  } cuando $P$ es generador.  \\
-	\textcolor{red}{roja }  cuando $P$ es normal.\\
-	\textcolor{brown}{café} cuando $P$ es generador normal.
-
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Variación acotada clásica}
-
-
-
-%------------------------------------------
-\begin{frame}{Particiones y suma de la variación}
-Comencemos recordando qué son las particiones y la suma de la variación con respecto de una partición.
-
-\medskip
-
-Una \textbf{partición} de \([a,b]\) es un conjunto ordenado de puntos
-\[
-\mathcal{P}: \{ a = x_0 < x_1 < \cdots < x_n = b \} .
-\]
-
-\medskip
-
-Dada una función \(f:[a,b]\to \mathbb{R}\), la \textbf{variación de \(f\) respecto a la partición \(\mathcal{P}\)} es
-\[
-V(f,\mathcal{P})=\sum_{k=1}^n \bigl|f(x_k)-f(x_{k-1})\bigr|.
-\]
-\end{frame}
-
-%------------------------------------------
-\begin{frame}{Variación total y variación acotada}
-Con esto ya podemos dar la definición de variación acotada en el caso real.
+\begin{frame}{Tipos de conos en un ENO}
+\framesubtitle{Propiedades geométricas que determinan el comportamiento de BV}
 
 \begin{block}{}
-    La variación total de \(f\) en \([a,b]\) se define como
-\[
-V_a^b(f)=\sup\{ V(f,\mathcal{P}) : \mathcal{P} \text{ partición de } [a,b]\}.
-\]
-
-Si \(V_a^b(f)<\infty\),
-decimos que \(f\) es de \textbf{variación acotada} en \([a,b]\).
+\centering
+\large Algunos tipos de conos
 \end{block}
 
+\begin{itemize}
+    \item \textbf{Conos normales}
+    \begin{itemize}
+        \item[$\ast$] \textbf{Normal:} existe $M>0$ tal que
+            $0 \le x \le y \Rightarrow \|x\| \le M\|y\|$.
+        \item[$\ast$] \textbf{Extendible:} existe $x^{*}\in \Xp^{*}$ y $\alpha>0$
+            tal que $x^{*}(x)\ge\alpha\|x\|$ para todo $x\in\Xp$.
+    \end{itemize}
+    \item \textbf{Conos no normales}
+    \begin{itemize}
+        \item[$\ast$] \textbf{Generador:} $X = \Xp - \Xp$, es decir, todo
+            $x\in X$ se escribe como $x=\alpha-\beta$ con $\alpha,\beta\in\Xp$.
+        \item[$\ast$] \textbf{Sólido:} $\operatorname{int}(\Xp)\ne\emptyset$.
+    \end{itemize}
+\end{itemize}
+
+% IDEA ORAL: Recordar que estas propiedades no son técnicas por sí mismas,
+% sino que cada una tiene una consecuencia concreta sobre las funciones BV.
+
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Relaciones entre tipos de conos}
+\framesubtitle{¿Qué implica qué?}
+
+\begin{columns}[c]
+\column{.60\textwidth}
+\begin{tikzpicture}
+    \begin{scope}[shift={(3cm,-3cm)}, fill opacity=0.5]
+        \def\Gcirc{(0.5,0) circle (2cm)}
+        \def\Ncirc{(0:3.7cm) circle (2cm)}
+        \fill[green!60!white] \Gcirc;
+        \fill[red!60!white]   \Ncirc;
+        \draw (-2,-2.5) rectangle (7,2)
+              node[text=black,above,fill opacity=1,text opacity=1]
+              {$(X,\|\cdot\|,\Xp)$ ENO};
+    \end{scope}
+\end{tikzpicture}
+
+\column{.38\textwidth}
+\begin{itemize}
+    \item \textcolor{green!70!black}{Verde:} cono generador
+    \item \textcolor{red!70!black}{Rojo:} cono normal
+    \item \textcolor{brown}{Intersección:} generador y normal
+\end{itemize}
+
 \medskip
+\small
+\textbf{Sólido} $\Rightarrow$ generador,
+pero no al revés.
 
-Denotaremos por \(BV[a,b]\) al conjunto de funciones de variación acotada en \([a,b]\).
+\end{columns}
+
 \end{frame}
 
-\begin{frame}{Propiedades y ejemplos clásicos}
-\framesubtitle{Ejemplos básicos de funciones en \(BV[a,b]\)}
+%──────────────────────────────────────────────────────────────────────────────
 
+\begin{frame}{Ejemplo 1: ENO con cono normal}
+\framesubtitle{$C^1_{\mathbb{R}}[a,b]$ con la norma del supremo}
 
+\begin{block}{}
+Sea $C_{\mathbb{R}}^{1}[a,b]$ con
+$\|f\|_{\infty} = \sup_{x\in[a,b]}|f(x)|$
+y el cono $\Xp = \{f\in C_{\mathbb{R}}^{1}[a,b] : f(x)\ge 0\}$.
 
-\begin{enumerate}
-    \item \textbf{Función constante}\\[2mm]
-    Si \(f(x)\equiv c\), entonces \(V(f,\mathcal{P})=0\) para toda partición, por tanto
-    \[
-    V_a^b(f)=0.
-    \]
+$(C_{\mathbb{R}}^{1}[a,b],\|\cdot\|_{\infty},\Xp)$ es un ENO y $\Xp$ es \textbf{normal}.
+\end{block}
 
-    \item \textbf{Función monótona}\\[2mm]
-    Si \(f\) es creciente, independientemente de la partición
-    \[
-    V(f,\mathcal{P})=f(b)-f(a).
-    \]
-    Por tanto toda función monótona es de variación acotada.
+\begin{columns}
+\column{.58\textwidth}
+\begin{tikzpicture}[scale=0.85]
+    \draw[->] (-3.5,0) -- (3.9,0) node[below] {$x$};
+    \draw[->] (0,-0.5) -- (0,3.9) node[left] {$y$};
+    \draw[smooth,<->,domain=-3.16:3.17,color=green!70!black,very thick]
+        plot (\x,{sin(\x r)*(\x+1)+1});
+    \node at (2,3.9) {\small\textcolor{green!70!black}{$f\ge 0$}};
+    \draw[fill] (-3.16,0) circle (0.07) node[below]{$a$};
+    \draw[fill] (3.3,0) circle (0.07) node[below]{$b$};
+\end{tikzpicture}
 
-    \item \textbf{Función Lipschitz}\\[2mm]
-    Si \(f\) es Lipschitz con constante \(L\), entonces
-    \[
-    V_a^b(f)\le L(b-a)<\infty.
-    \]
-\end{enumerate}
+\column{.40\textwidth}
+\textbf{Consecuencia:} \\[4pt]
+$0\le f\le g \Rightarrow \|f\|_\infty\le\|g\|_\infty$.
+
+\medskip
+Las sucesiones crecientes acotadas convergen.
+\end{columns}
+
 \end{frame}
 
-\begin{frame}{}
-    \begin{block}{Lema}
-        
-    Sea \(f,g \in BV[a,b]\), \(c\in\mathbb{R}\). Entonces:
+%──────────────────────────────────────────────────────────────────────────────
 
-\begin{enumerate}
-    \item \(V_a^b( f) = 0\) si y sólo si $f$ es una constante. 
-    \item \(V_a^b(c f) = |c|\,V_a^b(f)\).
-    \item \(V_a^b(f+g) \leq V_a^b(f) + V_a^b(g)\).
-    \item \(V_a^b(fg) \leq ||f||_{\infty} V_a^b(g) + ||g||_{\infty} V_a^b(f)\).
-    \item \(V_a^b(| f|) = \,V_a^b(f)\).
-    \item Si  \(c\in(a,b)\), entonces $V_a^b(f)=V_a^c(f)+V_c^b(f).$
-\end{enumerate}
-    \end{block}
-\end{frame}
-\begin{frame}{}
-    \begin{block}{Teorema}
-         \( BV[a,b]\) es un espacio completo (espacio de Banach) con las operaciones usuales  de funciones y la norma $ || f ||_{BV}= |f(a)| + V_a^b f $.
-    \end{block}
-    \begin{block}{\textbf{Teorema de Descomposición de Jordan}}
-         
-    Una función \(f:[a,b]\to\mathbb{R}\) es de variación acotada si y sólo si
-puede escribirse como
+\begin{frame}{Ejemplo 2: ENO con cono \textbf{no} normal}
+\framesubtitle{$C^1_{\mathbb{R}}[0,1]$ con la norma $\|\cdot\|_\infty+\|\cdot'\|_\infty$}
+
+\begin{block}{}
+Sea $C_{\mathbb{R}}^{1}[0,1]$ con
+$\|f\| = \|f\|_\infty + \|f'\|_\infty$
+y $\Xp = \{f\in C_{\mathbb{R}}^{1}[0,1]: f(x)\ge 0\}$.
+
+$\Xp$ \textbf{no es normal}.
+\end{block}
+
+\begin{columns}
+\column{.55\textwidth}
+\begin{tikzpicture}[scale=0.8]
+    \draw[->] (-3.5,0) -- (3.9,0) node[below]{$x$};
+    \draw[->] (0,-0.5) -- (0,3.9) node[left]{$y$};
+    \draw[smooth,<->,domain=-3.16:3.17,color=green!70!black,very thick]
+        plot (\x,{sin(\x r)+1});
+    \node at (-0.5,0.5){\small\textcolor{green!70!black}{$f_n$}};
+    \draw[->,color=MyTeal] (-3.16,2) -- (3.3,2) node[below]{$\bar{2}$};
+    \draw[fill] (-3.16,0) circle (0.07) node[below]{$0$};
+    \draw[fill] (3.3,0) circle (0.07) node[below]{$1$};
+\end{tikzpicture}
+
+\column{.43\textwidth}
+$f_n(t)=\sin(2\pi n t)+1$.
+
+\medskip
+$0\le f_n\le\bar{2}$, pero
 \[
-f = g-h,
+\|f_n\| = 1 + 2\pi n \to\infty.
 \]
-donde \(g\) y \(h\) son funciones crecientes en \([a,b]\).
-    \end{block}
+
+La norma no está controlada por el orden.
+\end{columns}
+
 \end{frame}
