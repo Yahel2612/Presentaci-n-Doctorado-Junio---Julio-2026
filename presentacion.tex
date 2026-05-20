@@ -14,13 +14,13 @@
 \setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!50!bg}
 
 \addtobeamertemplate{proof begin}{%
-    \setbeamercolor{block title}{fg=black,bg=red!50!white}
-    \setbeamercolor{block body}{fg=red, bg=red!30!white}
+    \setbeamercolor{block title}{fg=white,bg=Burgundy}
+    \setbeamercolor{block body}{fg=black, bg=Burgundy!15}
 }{}
 
 \BeforeBeginEnvironment{theorem}{
-    \setbeamercolor{block title}{fg=black,bg=orange!50!white}
-    \setbeamercolor{block body}{fg=orange, bg=orange!30!white}
+    \setbeamercolor{block title}{fg=white,bg=Amber}
+    \setbeamercolor{block body}{fg=black, bg=Amber!20}
 }
 \AfterEndEnvironment{theorem}{
  \setbeamercolor{block title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
@@ -28,8 +28,8 @@
 }
 
 \BeforeBeginEnvironment{definition}{%
-    \setbeamercolor{block title}{fg=black,bg=pink!50!white}
-    \setbeamercolor{block body}{fg=pink, bg=pink!30!white}
+    \setbeamercolor{block title}{fg=white,bg=MyTeal}
+    \setbeamercolor{block body}{fg=black, bg=MyTeal!15}
 }
 \AfterEndEnvironment{definition}{
  \setbeamercolor{block title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
@@ -83,6 +83,9 @@
  \usetikzlibrary{shapes,backgrounds}
 %Definir colores
 \definecolor{Azul}{rgb}{0.1,0.1,0.6}
+\definecolor{Amber}{RGB}{180,120,0}
+\definecolor{MyTeal}{RGB}{0,100,100}
+\definecolor{Burgundy}{RGB}{120,0,30}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  INICIO DE DOCUMENTO    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -148,7 +151,7 @@
    
 	
 
-\begin{frame}{Espacios de funciones vectoriales sobre ENO's }
+\begin{frame}{Espacios de funciones vectoriales sobre ENOs}
 \begin{block}{}
     Sean $(X,|| \cdot || , X_{+} ) $ un ENO. Una función  \textcolor{green}{$ f: [a,b] \longrightarrow X $} se dice que es una función vectorial.
 \end{block}
@@ -316,7 +319,7 @@
   \item[$ - $] \textbf{Variación Acotada Débil}
   \item \textbf{Variación Acotada en Orden}
   \begin{block}{}
-      Sean $ (X,|| \cdot || ) $ un espacio espacio de Riesz. Una función  $f : [a,b] \longrightarrow X $ es de \textbf{variación acotada respecto al orden}, si existe  $M \in X $ talque,
+      Sea $ (X,|| \cdot || ) $ un espacio de Riesz. Una función  $f : [a,b] \longrightarrow X $ es de \textbf{variación acotada respecto al orden}, si existe  $M \in X $ tal que,
      $$ V_{f}^{o} : = \sup \{ \sum_{i=1}^{n} | f(t_{i} ) - f(t_{i-1} ) | : P \in \wp  [a,b] \} \leq  M .$$
   \end{block}
     \end{itemize}
@@ -335,7 +338,7 @@
 \end{frame}
 
 \begin{frame}{}
-    El siguiente ejemplo es de una función creciente que  es de variación acotada débil, pero no es de variación acotada. 
+    El siguiente ejemplo es de una función creciente que es de variación acotada débil, pero no es de variación acotada fuerte.
 
 
  \begin{block}{Ejemplo}
@@ -372,13 +375,13 @@
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{\textcolor{purple}{No todas las funciones crecientes son de variación acotada o débil de variación acotada}}
+\begin{frame}{No todas las funciones crecientes son de variación acotada fuerte o de variación acotada débil}
     \begin{itemize}
         \item \textbf{Ejemplo:} 
         \begin{block}{}
             Sean $X=C_{\mathbb{R}}^{1}[0,1]$, $||f|| = ||f||_{\infty} + ||f'||_{\infty}$ y $P_0 = \{f \in X: f(0)=0 \  y  \  f(t)\geq 0, \forall t \in[0,1]\}$.\\  $( X, ||\cdot ||, P_0)$ es un ENO.
         \end{block}
-        \item Se probará que existe una función creciente que   no es débil de variación acotada y por lo tanto no es de variación de acotada. 
+        \item Se probará que existe una función creciente que no es de variación acotada débil y por lo tanto no es de variación acotada fuerte.
       
     \end{itemize}
 \end{frame}
@@ -443,7 +446,7 @@
     \begin{itemize}
          \item $ X_{+} $ es normal.
         \item  Si  toda $ f: [a,b] \longrightarrow X  $ creciente es de variación acotada débil.
-        \item Si toda sucesión creciente $ \{ x_{n} \} $ en $X$ es converge, si y sólo si, existe $ \{ x_{n_{k}} \} $ una subsucesión de $ \{ x_{n} \} $ convergente. 
+        \item Si toda sucesión creciente $ \{ x_{n} \} $ en $X$ converge, si y sólo si existe $ \{ x_{n_{k}} \} $ una subsucesión de $ \{ x_{n} \} $ convergente.
        
     \end{itemize}
 \end{frame}
@@ -496,7 +499,7 @@
 			\item $ Var_{a}^{b} ( M_{f} + N_{f} , X) =  Var_{a}^{b} (f, X) || \mu || $.
 			\item $ Var_{a}^{b} ( M_{f} - N_{f} , X) =  Var_{a}^{b} (f, X)  $.
 			\item $ || f ||_{BV} = || M_{f} - N_{f} ||_{BV} + || f(a ) || $.
-			\item Si además $X$ es un álgebra,entonces  $ BV $ es un álgebra. 
+			\item Si además $X$ es un álgebra, entonces $ BV $ es un álgebra.
 		\end{enumerate}
     \end{block}
 \end{frame}
@@ -512,7 +515,7 @@
     \begin{block}{Definición:}
         Una función $ f:[a,b] \longrightarrow X $ acotada es \textbf{Riemann-Stieltjes} respecto a $ g:[a,b] \longrightarrow \mathbb{R} $ si existe $ A \in X  $ tal que 
         
-        dado $ \epsilon > o  $, existe $ \delta >0  $ de $ [a,b] $ tal que $ \{ (I_{i} , \xi_{i} ) : i = 1,..., n \}   $ es una partición con norma menor $  \delta  $ de $ [a,b]  $, se cumple que
+        dado $ \epsilon > 0  $, existe $ \delta >0  $ tal que para toda partición $ \{ (I_{i} , \xi_{i} ) : i = 1,..., n \}   $ de $ [a,b]  $ con norma menor que $  \delta  $, se cumple que
         \begin{equation*}
             || \sum_{i=1}^{n}   f( \xi_{i} ) (g( t_{i} )  - g(t_{i-1}) ) - A  || < \epsilon .
         \end{equation*}
@@ -565,7 +568,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  BIBLIOGRAFÍA  %%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{\textcolor{blue}{Bibliografía}}
+\section{Bibliografía}
 \thispagestyle{empty}
 \newpage
 
@@ -577,7 +580,7 @@
 	\bibitem{cone2007}    \textsc{Aliprantis, Charalambos D} y \textsc{Tourky, Rabee}.  \textit{Cones and duality}. American Mathematical Soc., volumen 84.  \hypertarget{55}{(2007)}.\hyperlink{01}{\beamergotobutton{Regreso}}
 	
 	 \bibitem{Gou2004} \textsc{Gou D., Yeol J. C. } y \textsc{Jiang Z.}	\textit{Partial Ordering Methods in Nonlinear Problems}, 
-	Nova Science Plublishers Inc. Segunda edición.\hypertarget{05}{ (2004)}.
+	Nova Science Publishers Inc. Segunda edición.\hypertarget{05}{ (2004)}.
 	\hyperlink{22}{\beamergotobutton{Regreso}}
 
 	
@@ -777,11 +780,11 @@ Thus, 	$ \sum_{j=1}^{\infty} V(f_{j},[a,b])\leq V(f,[a,b])$.
 \end{frame}
 
 \begin{frame}{Espacio $ C^{1} ([a,b], X) $}
-Sea $X$ un ENO  donde $ X_{+} $ es normal y $ E^{1}  = C^{1} ( [a,b],X) $. Se define $E_{+}^{1} = \{ f \in E: f(t) \geq 0, f'(t) \geq 0 \ \forall t \in [a,b]  \} $ y $ || f ||_{\infty} = \sup \{ || f(t) ||_{X} : t \in [a,b] \} $.\\
+Sea $X$ un ENO  donde $ X_{+} $ es normal y $ E^{1}  = C^{1} ( [a,b],X) $. Se define $E_{+}^{1} = \{ f \in E^{1}: f(t) \geq 0, f'(t) \geq 0 \ \forall t \in [a,b]  \} $ y $ || f ||_{\infty} = \sup \{ || f(t) ||_{X} : t \in [a,b] \} $.\\
       Propiedades:
     \begin{enumerate}
-        \item Si $X_{+}$ es normal, entonces es normal.
-        \item Si en $X$ todos los intervalos ordenados cerrados son compactos, entonces  en  todos los intervalos ordenados cerrados son compactos.
+        \item Si $X_{+}$ es normal, entonces $E_{+}^{1}$ es normal.
+        \item Si en $X$ todos los intervalos ordenados cerrados son compactos, entonces en $E^{1}$ todos los intervalos ordenados cerrados son compactos.
         \item Dependiendo su orden es normal o no. 
     \end{enumerate}
 \end{frame}
