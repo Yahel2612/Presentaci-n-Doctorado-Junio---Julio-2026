@@ -35,33 +35,37 @@
 %──────────────────────────────────────────────────────────────────────────────
 
 \begin{frame}{Relaciones entre tipos de conos}
-\framesubtitle{¿Qué implica qué?}
+\framesubtitle{¿Qué implica qué? Las implicaciones son estrictas}
 
-\begin{columns}[c]
-\column{.60\textwidth}
-\begin{tikzpicture}
-    \begin{scope}[shift={(3cm,-3cm)}, fill opacity=0.5]
-        \def\Gcirc{(0.5,0) circle (2cm)}
-        \def\Ncirc{(0:3.7cm) circle (2cm)}
-        \fill[green!60!white] \Gcirc;
-        \fill[red!60!white]   \Ncirc;
-        \draw (-2,-2.5) rectangle (7,2)
-              node[text=black,above,fill opacity=1,text opacity=1]
-              {$(X,\|\cdot\|,\Xp)$ ENO};
-    \end{scope}
+\begin{center}
+\begin{tikzpicture}[
+    cbox/.style={draw,rounded corners=5pt,minimum width=2.4cm,
+                 minimum height=0.85cm,align=center,font=\small\bfseries},
+    impl/.style={->,thick,shorten >=3pt,shorten <=3pt},
+    noimpl/.style={dashed,gray,shorten >=3pt,shorten <=3pt}]
+
+\node[cbox,fill=MyTeal!25,draw=MyTeal] (sol) at (0,0) {Sólido};
+\node[cbox,fill=MyTeal!10,draw=MyTeal] (gen) at (4,0) {Generador};
+\node[cbox,fill=Amber!25,draw=Amber]   (ext) at (0,-2) {Extendible};
+\node[cbox,fill=Amber!10,draw=Amber]   (nor) at (4,-2) {Normal};
+
+\draw[impl,MyTeal]  (sol) -- (gen);
+\draw[impl,Amber]   (ext) -- (nor);
+\draw[noimpl]       (gen.north) to[bend right=30]
+      node[above,gray,font=\tiny]{recíproco no válido} (sol.north);
+\draw[noimpl]       (nor.north) to[bend right=30]
+      node[above,gray,font=\tiny]{recíproco no válido} (ext.north);
 \end{tikzpicture}
+\end{center}
 
-\column{.38\textwidth}
-\begin{itemize}
-    \item \textcolor{green!70!black}{Verde:} cono generador
-    \item \textcolor{red!70!black}{Rojo:} cono normal
-    \item \textcolor{brown}{Intersección:} generador y normal
-\end{itemize}
+\begin{columns}[t]
+\column{.48\textwidth}
+\small\textcolor{MyTeal}{\textbf{Sólido $\Rightarrow$ Generador:}}\\
+$\operatorname{int}(\Xp)\ne\emptyset$ implica $X=\Xp-\Xp$.
 
-\medskip
-\small
-\textbf{Sólido} $\Rightarrow$ generador,
-pero no al revés.
+\column{.48\textwidth}
+\small\textcolor{Amber}{\textbf{Extendible $\Rightarrow$ Normal:}}\\
+La existencia de un funcional separante garantiza control de la norma.
 
 \end{columns}
 
