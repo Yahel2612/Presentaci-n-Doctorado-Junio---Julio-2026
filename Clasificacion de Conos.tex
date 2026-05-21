@@ -35,44 +35,39 @@
 %──────────────────────────────────────────────────────────────────────────────
 
 \begin{frame}{Relaciones entre tipos de conos}
-\framesubtitle{Las familias no son excluyentes; un cono puede tener varias propiedades}
+\framesubtitle{Las propiedades Generador y Normal son independientes}
 
 \begin{center}
-\begin{tikzpicture}[scale=0.82]
-  %% Universo ENO
-  \draw[rounded corners=10pt, fill=gray!7, draw=gray!40, thick]
-       (-4.5,-2.1) rectangle (4.5,2.1);
-  \node[gray!55, font=\footnotesize\bfseries] at (3.9,1.75) {ENO};
+\begin{tikzpicture}[scale=0.85]
+  %% Contenedor — Espacios normados ordenados
+  \draw[rounded corners=8pt, fill=gray!6, draw=gray!45, thick]
+       (-4.8,-1.8) rectangle (4.8,2.0);
+  \node[gray!55, font=\footnotesize\bfseries] at (0,1.73)
+       {Espacios normados ordenados};
 
-  %% Región Generador (izquierda)
+  %% Elipse Generador (izquierda)
   \begin{scope}
-    \clip (-4.5,-2.1) rectangle (4.5,2.1);
-    \fill[MyTeal, opacity=0.18] (-1.3,0) ellipse (2.6 and 1.55);
+    \clip (-4.8,-1.8) rectangle (4.8,2.0);
+    \fill[MyTeal, opacity=0.22] (-1.4,0) ellipse (2.8 and 1.2);
   \end{scope}
-  \draw[MyTeal!70, thick] (-1.3,0) ellipse (2.6 and 1.55);
-  \node[MyTeal!85!black, font=\small\bfseries] at (-3.0,0) {Generador};
+  \draw[MyTeal!70, thick] (-1.4,0) ellipse (2.8 and 1.2);
+  \node[MyTeal!85!black, font=\small\bfseries, align=center]
+       at (-3.1,0) {Conos\\generadores};
 
-  %% Región Normal (derecha)
+  %% Elipse Normal (derecha)
   \begin{scope}
-    \clip (-4.5,-2.1) rectangle (4.5,2.1);
-    \fill[Amber, opacity=0.18] (1.3,0) ellipse (2.6 and 1.55);
+    \clip (-4.8,-1.8) rectangle (4.8,2.0);
+    \fill[Amber, opacity=0.22] (1.4,0) ellipse (2.8 and 1.2);
   \end{scope}
-  \draw[Amber!80, thick] (1.3,0) ellipse (2.6 and 1.55);
-  \node[Amber!80!black, font=\small\bfseries] at (3.0,0) {Normal};
-
-  %% Sólido ⊂ Generador
-  \fill[MyTeal, opacity=0.40] (-2.5,0.5) ellipse (0.85 and 0.52);
-  \draw[MyTeal!90, thick] (-2.5,0.5) ellipse (0.85 and 0.52);
-  \node[font=\scriptsize\bfseries, MyTeal!20!black] at (-2.5,0.5) {Sólido};
-
-  %% Extendible ⊂ Normal
-  \fill[Amber, opacity=0.45] (2.5,0.5) ellipse (0.85 and 0.52);
-  \draw[Amber!90!black, thick] (2.5,0.5) ellipse (0.85 and 0.52);
-  \node[font=\scriptsize\bfseries, Amber!20!black] at (2.5,0.5) {Extendible};
+  \draw[Amber!80, thick] (1.4,0) ellipse (2.8 and 1.2);
+  \node[Amber!80!black, font=\small\bfseries, align=center]
+       at (3.1,0) {Conos\\normales};
 
   %% Etiqueta intersección
-  \node[font=\tiny, gray!60, align=center] at (0,0.2) {Gen.};
-  \node[font=\tiny, gray!60, align=center] at (0,-0.2) {y Norm.};
+  \node[font=\footnotesize\bfseries, gray!60, align=center]
+       at (0,0.15) {Gen.\ y};
+  \node[font=\footnotesize\bfseries, gray!60, align=center]
+       at (0,-0.3) {Normal};
 \end{tikzpicture}
 \end{center}
 
