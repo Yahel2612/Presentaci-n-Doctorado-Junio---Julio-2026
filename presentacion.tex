@@ -131,26 +131,26 @@
 %% ═══════════════════════════════════════════════════════════════════════════
 \section{Motivación}
 
-\begin{frame}[shrink=20]{¿Por qué generalizar la variación acotada?}
+\begin{frame}[shrink=6]{¿Por qué generalizar la variación acotada?}
 \framesubtitle{Contexto y pregunta central}
 
 \begin{block}{Punto de partida: caso clásico}
-{\small El Teorema de Jordan garantiza que toda $f:[a,b]\to\mathbb{R}$ de
-variación acotada se descompone como diferencia de dos funciones crecientes.}
+El Teorema de Jordan garantiza que toda $f:[a,b]\to\mathbb{R}$ de
+variación acotada se descompone como diferencia de dos funciones crecientes.
 \end{block}
 
-\vspace{2pt}
+\vspace{1pt}
 
 \begin{block}{La pregunta}
-{\small ¿Qué ocurre si $f:[a,b]\to X$, donde $(X,\|\cdot\|,\Xp)$ es un
-\textbf{espacio normado ordenado}?}
+¿Qué ocurre si $f:[a,b]\to X$, donde $(X,\|\cdot\|,\Xp)$ es un
+\textbf{espacio normado ordenado}?
 \end{block}
 
-\vspace{2pt}
+\vspace{1pt}
 
 \begin{alertblock}{Respuesta (adelanto)}
-{\small Las propiedades clásicas dependen de la \textbf{geometría del cono} $\Xp$:
-normalidad, solidez, ser generador o extendible.}
+Las propiedades clásicas dependen de la \textbf{geometría del cono} $\Xp$:
+normalidad, solidez, ser generador o extendible.
 \end{alertblock}
 
 % IDEA ORAL: Enmarcar la presentación como una investigación que generaliza
@@ -210,23 +210,20 @@ tiene \emph{estructura de orden}?
 
 %──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}[shrink=40]{Tres nociones de variación acotada}
+\begin{frame}{Tres nociones de variación acotada}
 \framesubtitle{Las generalizaciones no son equivalentes en general}
 
-Al generalizar $f:[a,b]\to X$, surgen \textbf{tres nociones distintas}:
-
 \begin{enumerate}
-    \setlength{\itemsep}{4pt}
+    \setlength{\itemsep}{6pt}
     \item \textbf{Variación fuerte:}
           $\sup_{\mathcal{P}}\sum\|f(t_i)-f(t_{i-1})\|<\infty$.
     \item \textbf{Variación débil:}
           $\phi\circ f\in BV[a,b]$ para todo $\phi\in X^*$.
     \item \textbf{Variación en orden} (espacios de Riesz):
-          existe $M\in X$ tal que
-          $\sup_{\mathcal{P}}\sum|f(t_i)-f(t_{i-1})|\le M$.
+          existe $M\in X$ tal que $\sup_{\mathcal{P}}\sum|f(t_i)-f(t_{i-1})|\le M$.
 \end{enumerate}
 
-\medskip
+\smallskip
 \alert{Pregunta:} ¿qué implicaciones se cumplen entre estas nociones?
 
 \end{frame}
@@ -437,27 +434,34 @@ Por tanto, $D\circ f\notin BV[0,1]$.
 
 %──────────────────────────────────────────────────────────────────────────────
 
-\begin{frame}[shrink=15]{Equivalencia: normalidad y variación débil}
+\begin{frame}{Equivalencia: normalidad y variación débil}
 \framesubtitle{El cono normal es la condición correcta}
 
 \begin{block}{Lema (equivalencia)}
-{\footnotesize Sea $X$ un ENO. Son equivalentes:
+Sea $X$ un ENO. Son equivalentes:
 \begin{enumerate}
     \item $\Xp$ es \textbf{normal}.
     \item Para toda $f:[a,b]\to X$ \textbf{creciente}, $f$ es de v.a.\ \textbf{débil}.
     \item Toda sucesión creciente $\{x_n\}$ en $X$ converge
           si y solo si tiene una subsucesión convergente.
-\end{enumerate}}
+\end{enumerate}
 \end{block}
-
-\begin{alertblock}{Lectura del resultado}
-{\footnotesize La normalidad del cono es \emph{exactamente} la condición que hace que
-el monotonismo implique variación débil.
-El contraejemplo anterior muestra que sin normalidad esta implicación falla.}
-\end{alertblock}
 
 % IDEA ORAL: Insistir en que el lema dice "si y solo si". No es solo
 % una condición suficiente: es la condición caracterizadora exacta.
+
+\end{frame}
+
+%──────────────────────────────────────────────────────────────────────────────
+
+\begin{frame}{Lectura: normalidad y variación débil}
+\framesubtitle{La condición es exacta, no solo suficiente}
+
+\begin{alertblock}{Lectura del resultado}
+La normalidad del cono es \emph{exactamente} la condición que hace que
+el monotonismo implique variación débil.
+El contraejemplo anterior muestra que sin normalidad esta implicación falla.
+\end{alertblock}
 
 \end{frame}
 
@@ -549,6 +553,8 @@ investigación.
 %%  APÉNDICE — numera solo hasta aquí
 %% ═══════════════════════════════════════════════════════════════════════════
 \appendix
+%% Ocultar pie de página en diapositivas post-cuerpo (evita "0 de 0")
+\setbeamertemplate{footline}{}
 
 %% ═══════════════════════════════════════════════════════════════════════════
 %%  BIBLIOGRAFÍA
